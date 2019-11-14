@@ -8,6 +8,7 @@
 <h1>Word</h1>
 <button id = "makeWord">click to get a word.</button>
 <h2 id ="displayedWord">This should be a random word</h2>
+<button id = "hintButton"> display hint</button>
 <h2 id = "definition">This will define that random word</h2>
 
 <script>
@@ -26,14 +27,19 @@ function displayDefinition(choice){
         document.getElementById("definition").innerHTML = wordDefinition[wordList[i]]}
     }
 }
+function makeVisible(){
+    document.getElementById("definition").style.visibility= "visible"
+}
 
 function createWord(){
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let choice = wordList[randomNumber];
+    document.getElementById("definition").style.visibility="hidden";
     document.getElementById("displayedWord").innerHTML = choice;
     displayDefinition(choice)
 }
 document.getElementById("makeWord").onclick = createWord;
+document.getElementById("hintButton").onclick = makeVisible;
 
 </script>
 
