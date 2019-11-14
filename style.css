@@ -1,0 +1,22 @@
+body {
+    background-color: gainsboro;
+}
+button {
+    width: 50px;
+    height:50px;
+    font-size: 24px;
+    margin: 10px;
+    font-family: "Times New Roman";
+    background-color: darkgray;
+}
+h1, h2, h3 {
+    font-family: "Sylfaen";
+    text-align: center;
+}
+.centerContainer {
+    display: flex;
+    justify-content: center;
+}
+.innerTextContainer {
+    display: block;
+}
