@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Placeholder</title>
+</head>
+<body>
+<h1>Word</h1>
+<button id = "makeWord">click to get a word.</button>
+<h2 id ="displayedWord">This should be a random word</h2>
+<button id = "hintButton"> display hint</button>
+<h2 id = "definition">This will define that random word</h2>
+
+<script>
+let wordDefinition = {"committee": "A group of people in charge of something", "happy": "How you feel when you do well on an assignment", "humanitarian": "Way to describe something that benefit people",
+ "sausage": "A great food to hsve with your eggs and toast.", "helix": "DNA is a double ___", "fortification": "To reinforce something against a destructive force.",
+ "psychadelic": "An adjective people used to describe everything in the sixties",
+"maternal": "Anything to do with mothers", "fraternity": "Where college dudes can throw sick parties.",
+ "corruption": "When there are problems in a political structure due to the personal interests of politicians conflicting with the interests of the population."};
+
+let wordList = ["committee", "happy", "helix", "humanitarian", "sausage", "helix", "fortification", "psychadelic",
+ "maternal", "fraternity", "corruption"];
+
+function displayDefinition(choice){
+    for (i=0; i<wordList.length; i++){
+        if (choice == wordList[i]){
+        document.getElementById("definition").innerHTML = wordDefinition[wordList[i]]}
+    }
+}
+function makeVisible(){
+    document.getElementById("definition").style.visibility= "visible"
+}
+
+function createWord(){
+    let randomNumber = Math.floor(Math.random()*wordList.length);
+    let choice = wordList[randomNumber];
+    document.getElementById("definition").style.visibility="hidden";
+    document.getElementById("displayedWord").innerHTML = choice;
+    displayDefinition(choice)
+}
+document.getElementById("makeWord").onclick = createWord;
+document.getElementById("hintButton").onclick = makeVisible;
+
+</script>
+
+</body>
+</html>
