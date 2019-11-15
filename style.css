@@ -21,22 +21,34 @@ h1, h2, h3 {
     display: block;
 }
 
+#makeWordstyle{
+position: relative;
+width:200 px;
+height:100px;
+font-family: "Times New Roman";
+bottom: 50 px;
+}
+
 #makeWord{
 position: relative;
-
-width:200 px;
-height:100px;
-background-color: darkgray
+width:200px;
+background-color: darkgray;
 font-family: "Times New Roman";
+font-size:5px
 bottom: 50 px;
-left:50 px;
+float:left;
 }
+
+#hintButtonstyle{
+position: relative;
+height:100px;
+font-family: "Times New Roman";
+}
+
 #hintButton{
 position: relative;
-width:200 px;
-height:100px;
-background-color: darkgray
+width:200px;
+background-color: darkgray;
 font-family: "Times New Roman";
-bottom: 50 px;
-right: 50px;
+float: left;
 }
