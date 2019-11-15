@@ -2,10 +2,13 @@ body {
     background-color: gainsboro;
 }
 button {
-    width: 50px;
-    height:50px;
+    width: auto;
+    height: auto;
+    min-width: 50px;
+    min-height: 50px;
     font-size: 24px;
     margin: 10px;
+    padding: 10px;
     font-family: "Times New Roman";
     background-color: darkgray;
 }
@@ -19,12 +22,4 @@ h1, h2, h3 {
 }
 .innerTextContainer {
     display: block;
-}
-#makeWord{
-width:200px;
-bottom: 50px;
-}
-#hintButton {
-position: relative;
-width:200px;
 }
