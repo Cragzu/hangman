@@ -12,34 +12,65 @@
 <h2 id = "definition">This will define that random word</h2>
 
 <script>
-let wordDefinition = {"committee": "A group of people in charge of something", "happy": "How you feel when you do well on an assignment", "humanitarian": "Way to describe something that benefit people",
- "sausage": "A great food to hsve with your eggs and toast.", "helix": "DNA is a double ___", "fortification": "To reinforce something against a destructive force.",
- "psychadelic": "An adjective people used to describe everything in the sixties",
-"maternal": "Anything to do with mothers", "fraternity": "Where college dudes can throw sick parties.",
- "corruption": "When there are problems in a political structure due to the personal interests of politicians conflicting with the interests of the population."};
 
-let wordList = ["committee", "happy", "helix", "humanitarian", "sausage", "helix", "fortification", "psychadelic",
+// Create a list of possible words to use
+let wordList = ["committee", "happy", "helix", "humanitarian", 
+"sausage", "helix", "fortification", "psychadelic",
  "maternal", "fraternity", "corruption"];
 
-function displayDefinition(choice){
+ // Create hints to go along with the words
+let wordDefinition = 
+{"committee": "A group of people in charge of something",
+ "happy": "How you feel when you do well on an assignment", 
+ "humanitarian": "Way to describe something that benefit people",
+ "sausage": "A great food to have with your eggs and toast.", 
+ "helix": "DNA is a double ___", 
+ "fortification": "To reinforce something against a destructive force.",
+ "psychadelic": "An adjective people used to describe everything in the sixties",
+"maternal": "Anything to do with mothers", 
+"fraternity": "Where college dudes can throw sick parties.",
+ "corruption": "When there are problems in a political structure due to the personal interests of politicians conflicting with the interests of the population."};
+
+ // set a boolean for the visibility of the hints and set it to false.
+ let hint = false
+
+// Choose the right definition for the word that appears.
+function chooseDefinition(choice){
     for (i=0; i<wordList.length; i++){
         if (choice == wordList[i]){
         document.getElementById("definition").innerHTML = wordDefinition[wordList[i]]}
     }
 }
-function makeVisible(){
+
+// Allow the hint-button to make the hints invisible or visible.
+function toggleVisibility(){
+    if (hint == false){
     document.getElementById("definition").style.visibility= "visible"
+    document.getElementById("hintButton").innerHTML = "hide hint"
+    hint = true
+    }
+    else{
+    document.getElementById("definition").style.visibility= "hidden"
+    document.getElementById("hintButton").innerHTML = "display hint"
+    hint = false
+}
 }
 
+// Randomly select a word from the word list.
 function createWord(){
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let choice = wordList[randomNumber];
     document.getElementById("definition").style.visibility="hidden";
     document.getElementById("displayedWord").innerHTML = choice;
-    displayDefinition(choice)
+    document.getElementById("hintButton").innerHTML = "display hint"
+    hint = false
+    chooseDefinition(choice)
 }
+// make the word-button call a random word.
 document.getElementById("makeWord").onclick = createWord;
-document.getElementById("hintButton").onclick = makeVisible;
+
+// Make the hint button bring up a hint.
+document.getElementById("hintButton").onclick = toggleVisibility;
 
 </script>
 

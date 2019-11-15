@@ -20,3 +20,23 @@ h1, h2, h3 {
 .innerTextContainer {
     display: block;
 }
+
+#makeWord{
+position: relative;
+
+width:200 px;
+height:100px;
+background-color: darkgray
+font-family: "Times New Roman";
+bottom: 50 px;
+left:50 px;
+}
+#hintButton{
+position: relative;
+width:200 px;
+height:100px;
+background-color: darkgray
+font-family: "Times New Roman";
+bottom: 50 px;
+right: 50px;
+}
