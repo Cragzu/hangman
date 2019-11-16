@@ -24,10 +24,8 @@ function Button(label) {
 function generateButtons() {
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
-        new Button(currentLetter); // create a new HTML button element within JS script
+        new Button(currentLetter); // create a new button object
     }
 }
-
-
 
 generateButtons();
