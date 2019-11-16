@@ -15,7 +15,7 @@
 </div>
 
 <div class="centerContainer">
-    <button id = "makeWord">click to get a word.</button>
+    <button id = "makeWord">Click to get a word.</button>
 </div>
 
 <h2 id ="displayedWord">This is where the random word will appear.  Will want it invisible until the end.</h2>
@@ -30,6 +30,7 @@
 
 
 <div><h2 id = "definition">This is where a hint will appear for</h2></div>
+<script src="wordBank.js"></script>
 <script>
     // Dynamically generate between 0 and 26 buttons with letters of the alphabet.
     let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -46,69 +47,7 @@
         }
     }
 
-    // generate random words
-</script>
-</div>
-<script>
-    // Create a list of possible words to use
-    let wordList = ["committee", "happy", "helix", "humanitarian",
-    "sausage", "helix", "fortification", "psychadelic",
-     "maternal", "fraternity", "corruption"];
-
-     // Create hints to go along with the words
-    let wordDefinition =
-    {"committee": "A group of people in charge of something",
-     "happy": "How you feel when you do well on an assignment",
-     "humanitarian": "Way to describe something that benefit people",
-     "sausage": "A great food to have with your eggs and toast.",
-     "helix": "DNA is a double ___",
-     "fortification": "To reinforce something against a destructive force.",
-     "psychadelic": "An adjective people used to describe everything in the sixties",
-    "maternal": "Anything to do with mothers",
-    "fraternity": "Where college dudes can throw sick parties.",
-     "corruption": "When there are problems in a political structure due to the personal interests of politicians conflicting with the interests of the population."};
-
-     // set a boolean for the visibility of the hints and set it to false.
-     let hint = false;
-
-    // Choose the right definition for the word that appears.
-    function chooseDefinition(choice){
-        for (let i = 0; i<wordList.length; i++){
-            if (choice === wordList[i]){
-            document.getElementById("definition").innerHTML = wordDefinition[wordList[i]]}
-        }
-    }
-
-    // Allow the hint-button to make the hints invisible or visible.
-    function toggleVisibility() {
-        if (hint === false) {
-        document.getElementById("definition").style.visibility= "visible";
-        document.getElementById("hintButton").innerHTML = "hide hint";
-        hint = true;
-        }
-        else {
-        document.getElementById("definition").style.visibility= "hidden";
-        document.getElementById("hintButton").innerHTML = "display hint";
-        hint = false;
-        }
-    }
-
-    // Randomly select a word from the word list.
-    function createWord(){
-        let randomNumber = Math.floor(Math.random()*wordList.length);
-        let choice = wordList[randomNumber];
-        document.getElementById("definition").style.visibility="hidden";
-        document.getElementById("displayedWord").innerHTML = choice;
-        document.getElementById("hintButton").innerHTML = "display hint";
-        hint = false;
-        chooseDefinition(choice);
-    }
-    // make the word-button call a random word.
-    document.getElementById("makeWord").onclick = createWord;
-
-    // Make the hint button bring up a hint.
-    document.getElementById("hintButton").onclick = toggleVisibility;
-        
+    generateButtons();
 </script>
 
 <script>
