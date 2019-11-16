@@ -21,7 +21,11 @@
 <h2 id ="displayedWord">This is where the random word will appear.  Will want it invisible until the end.</h2>
 
 <div class="centerContainer">
-    <button id="hintButton">Display Hint</button>
+    <button id = "hintButton"> display hint</button>
+    <button id = "resetBtn">Reset</button>
+    <p id="lives">You've used 0 lives</p>
+    <p>Score:</p>
+    <p id="score">0</p>
 </div>
 
 
@@ -32,7 +36,7 @@
     let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                     'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     function generateButtons() {
-        for (i = 0; i < letters.length; i++) {
+        for (let i = 0; i < letters.length; i++) {
         let btn = document.createElement("BUTTON"); // create a new HTML button element within JS script
         let currentLetter = letters[i];
 
@@ -42,7 +46,62 @@
                                                 " letter is in the word.")}
         }
     }
+
     generateButtons();
+</script>
+
+<script>
+    //Code for PLAYING the game
+    function Game () {
+        this.lives = 0;
+        this.word = '';
+        this.score = 0;
+
+        resetLives: {
+            this.lives = 0;
+        }
+    }
+
+    //create_board
+        /*This is:
+            - the instantiation of the letters,
+            - the (hidden) word selection,
+            - instantiation of the game object,
+            - setting event handlers up
+            - other stuff???
+         */
+
+    generateButtons();
+    let game = new Game();
+    game.word = createWord();
+    let guess = '';
+    let letter_occurrences = 0;
+
+    //Event handlers can go here
+    document.getElementById("resetBtn").onclick = resetGameHandler;
+
+    //get user guess
+    //update score based on guess
+    updateScoreHandler(letter_occurrences)
+
+
+    /*EVENT HANDLERS*/
+    //Process game reset
+    function resetGameHandler() {
+        game.lives = 0;
+        document.getElementById("lives").innerHTML = "You've used: " + game.lives + " lives";
+    }
+
+    //Change users score
+    function updateScoreHandler(occurrences) {
+        game.lives += occurrences;
+
+        if (occurrences === 0) {
+            game.lives--;
+        }
+
+        document.elementFromPoint("score").value = game.lives;
+    }
 </script>
 </body>
 </html>
