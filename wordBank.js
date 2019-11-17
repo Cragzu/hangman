@@ -41,16 +41,20 @@ function toggleVisibility() {
 // Randomly select a word from the array
 function createWord(){
     let randomNumber = Math.floor(Math.random()*wordList.length);
-    let selectedWord = wordList[randomNumber];
+    let selectedWord = wordList[randomNumber].name;
+    console.log(selectedWord);
 
     definitionText.style.visibility="hidden";
-    document.getElementById("displayedWord").innerHTML = selectedWord.name;
+    document.getElementById("displayedWord").innerHTML = selectedWord;
     definitionText.innerHTML = selectedWord.definition;
     hintButton.innerHTML = "display hint";
+
+    return selectedWord.toUpperCase(); // to pass to letter buttons
 }
 
 // Make the word-button call a random word
-document.getElementById("makeWord").onclick = createWord;
+selectedWord = createWord();
+document.getElementById("makeWord").onclick = selectedWord;
 
 // Make the hint button bring up a hint
 hintButton.onclick = toggleVisibility;
