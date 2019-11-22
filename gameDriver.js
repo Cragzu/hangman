@@ -1,8 +1,8 @@
-// Scripts to run the game, keep track of score and lives, and reset.
+// Scripts to run the game, keep track of score and lives_used, and reset.
 
 //Code for PLAYING the game
 function Game () {
-    this.lives = 0;
+    this.lives_used = 0;
     this.word = '';
     this.score = 0;
 
@@ -30,23 +30,48 @@ document.getElementById("resetBtn").onclick = resetGameHandler;
 
 //get user guess
 //update score based on guess
-updateScoreHandler(letter_occurrences)
+guessMadeHandler(letter_occurrences)
 
 
 /*EVENT HANDLERS*/
-//Process game reset
-function resetGameHandler() {
-    game.lives = 0;
-    document.getElementById("lives").innerHTML = "You've used: " + game.lives + " lives";
+
+//Process users guess
+function guessMadeHandler(guessedCorrectLetter) {
+    if (guessedCorrectLetter) {
+        updateScore(1);
+    }
+    else {
+        updateLives(-1);
+    }
 }
 
-//Change users score
-function updateScoreHandler(occurrences) {
-    game.lives += occurrences;
+//Process game reset (reset lives_used and score to 0)
+function resetGameHandler() {
+    game.lives_used = 0;
+    game.score = 0;
 
-    if (occurrences === 0) {
-        game.lives--;
+    document.getElementById("lives_used").innerHTML = "You've used: " + game.lives_used + " lives_used";
+    document.getElementById("score").innerText = game.score;
+}
+
+/*Helper functions*/
+
+function updateScore(scoreChange) {
+    game.score += scoreChange;
+    document.getElementById("score").innerHTML = game.score;
+}
+
+function updateLives(lifeChange) {
+    game.lives += lifeChange;
+    document.getElementById("lives_used").innerHTML = game.lives;
+}
+
+//Output the end-of-game
+function endGame(didUserWin, element_id) {
+    if (didUserWin) {
+        document.getElementById(element_id).innerHTML = "Wow! You won! Press reset to play again";
     }
-
-    document.elementFromPoint("score").value = game.lives;
+    else {
+        document.getElementById(element_id).innerHTML = "You've lost!";
+    }
 }
