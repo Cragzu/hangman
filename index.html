@@ -33,13 +33,13 @@
                     'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
     function generateButtons() {
         for (i = 0; i < letters.length; i++) {
-        let btn = document.createElement("BUTTON"); // create a new HTML button element within JS script
-        let currentLetter = letters[i];
+            let btn = document.createElement("BUTTON"); // create a new HTML button element within JS script
+            let currentLetter = letters[i];
 
-        document.body.appendChild(btn); // display it on the page
-        btn.innerHTML = currentLetter;
-        btn.onclick = function () {window.alert("Placeholder function. Button should react according to whether the" +
-                                                " letter is in the word.")}
+            document.body.appendChild(btn); // display it on the page
+            btn.innerHTML = currentLetter;
+            btn.onclick = function () {window.alert("Placeholder function. Button should react according to " +
+                                                    "whether the letter is in the word.")}
         }
     }
     generateButtons();
