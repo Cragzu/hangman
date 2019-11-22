@@ -1,6 +1,9 @@
+import letterButtons;
+import wordBank;
+
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
-//Code for PLAYING the game
+//Game object, holding the word, lives used, score
 function Game () {
     this.lives_used = 0;
     this.word = '';
@@ -11,27 +14,12 @@ function Game () {
     }
 }
 
-//create_board
-/*This is:
-    - the instantiation of the letters,
-    - the (hidden) word selection,
-    - instantiation of the game object,
-    - setting event handlers up
-    - other stuff???
+/*Create the board:
+    - the instantiation of the letter buttons
+    - instantiation of the game object
  */
-
 let game = new Game();
 game.word = createWord();
-let guess = '';
-let letter_occurrences = 0;
-
-//Event handlers can go here
-document.getElementById("resetBtn").onclick = resetGameHandler;
-
-//get user guess
-//update score based on guess
-guessMadeHandler(letter_occurrences)
-
 
 /*EVENT HANDLERS*/
 
