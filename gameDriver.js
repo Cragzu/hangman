@@ -21,7 +21,9 @@ function Game () {
  */
 
 let game = new Game();
-game.word = createWord();
+console.log('Game word before: ', game.word);
+game.word = selectedWord;
+console.log('Game word after: ', game.word);
 let guess = '';
 let letter_occurrences = 0;
 

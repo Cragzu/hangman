@@ -39,21 +39,23 @@ function toggleVisibility() {
 }
 
 // Randomly select a word from the array
-function createWord(){
+function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
-    let selectedWord = wordList[randomNumber].name;
-    console.log(selectedWord);
+    let wordObject = wordList[randomNumber];
+    let word = wordObject.name;
+    console.log(word);
 
     definitionText.style.visibility="hidden";
-    document.getElementById("displayedWord").innerHTML = selectedWord;
-    definitionText.innerHTML = selectedWord.definition;
+    document.getElementById("displayedWord").innerHTML = word;
+    definitionText.innerHTML = wordObject.definition;
+    console.log('description:', wordObject.definition);
     hintButton.innerHTML = "display hint";
 
-    return selectedWord.toUpperCase(); // to pass to letter buttons
+    return word.toUpperCase(); // to pass to letter buttons
 }
 
 // Make the word-button call a random word
-selectedWord = createWord();
+var selectedWord = createWord(); // global variable, used throughout the game
 document.getElementById("makeWord").onclick = selectedWord;
 
 // Make the hint button bring up a hint
