@@ -11,6 +11,8 @@ button {
     padding: 10px;
     font-family: "Times New Roman";
     background-color: darkgray;
+    cursor: pointer;
+    pointer-events: all;
 }
 h1, h2, h3 {
     font-family: "Sylfaen";
@@ -22,4 +24,16 @@ h1, h2, h3 {
 }
 .innerTextContainer {
     display: block;
+}
+.correctGuessButton {
+    background-color: palegreen;
+    color: darkgreen;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.wrongGuessButton {
+    background-color: indianred;
+    color: darkred;
+    cursor: not-allowed;
+    pointer-events: none;
 }

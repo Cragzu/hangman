@@ -18,31 +18,22 @@
     <button id = "makeWord">Click to get a word.</button>
 </div>
 
-<h2 id ="displayedWord">This is where the random word will appear.  Will want it invisible until the end.</h2>
+<h2 id ="displayedWord">This is where the random word will appear. Will want it invisible until the end.</h2>
 
 <div class="centerContainer">
-    <button id="hintButton">Display Hint</button>
+    <button id = "hintButton"> display hint</button>
+    <button id = "resetBtn">Reset</button>
+    <p id="lives">You've used 0 lives </p>
+    <p>Score: </p>
+    <p id="score">0</p>
 </div>
 
+<h2 id = "definition">This is where a hint will appear for the word</h2>
 
-<div><h2 id = "definition">This is where a hint will appear for</h2></div>
+<!--import scripts-->
 <script src="wordBank.js"></script>
-<script>
-    // Dynamically generate between 0 and 26 buttons with letters of the alphabet.
-    let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-                    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    function generateButtons() {
-        for (i = 0; i < letters.length; i++) {
-            let btn = document.createElement("BUTTON"); // create a new HTML button element within JS script
-            let currentLetter = letters[i];
+<script src="letterButtons.js"></script>
+<script src="gameDriver.js"></script>
 
-            document.body.appendChild(btn); // display it on the page
-            btn.innerHTML = currentLetter;
-            btn.onclick = function () {window.alert("Placeholder function. Button should react according to " +
-                                                    "whether the letter is in the word.")}
-        }
-    }
-    generateButtons();
-</script>
 </body>
 </html>
