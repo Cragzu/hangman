@@ -1,6 +1,3 @@
-import letterButtons;
-import wordBank;
-
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
 //Game object, holding the word, lives used, score
