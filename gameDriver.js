@@ -1,4 +1,4 @@
-// Scripts to run the game, keep track of score and lives_used, and reset.
+// Scripts to run the game, keep track of score and lives, and reset.
 
 // ----->                                OBJECT and other VARIABLE declarations
 
@@ -7,17 +7,17 @@ let hint = false; // Put this into Game
 
 //Game object, holding the word, lives used, score
 function Game () {
-    this.lives_used = 0;
+    this.lives = 7;
     this.word = createWord();
     this.score = 0;
     this.hint = false;
 
     // These functions aren't resolvable.... I've no idea why not
     this.resetGame = function() {
-        this.lives_used = 0;
+        this.lives = 0;
         this.score = 0;
         document.getElementById('score').innerHTML = game.score;
-        document.getElementById('lives').innerHTML = game.lives_used;
+        document.getElementById('lives').innerHTML = game.lives;
 
         for (i = 0; i < letterButtons.length; i++)
             letterButtons[i].className = ''; // Remove classes from all buttons
@@ -28,7 +28,7 @@ function Game () {
     };
 
     this.useALife = function() {
-        this.lives++;
+        this.lives--;
     };
 
     this.toggleHint = function() {
@@ -54,10 +54,16 @@ function Button(label, word) {
     this.btn.onclick = function() { // method for click behaviour
         if (word.includes(label)) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
+            game.incrementScore();
+            console.log('Score:', game.score)
         }
         else { // the guess was incorrect
             this.className = "wrongGuessButton";
+            game.useALife();
+            console.log('Lives: ', game.lives)
         }
+        
+        // updateGameStats(); This function doesn't exist..
     };
 }
 
@@ -120,25 +126,10 @@ function createWord() {
 
 // Compare the users guess to the word
 // NOTE: ensure that the onclick function of Button meshes well with this function (maybe place the function invocation there)
-function checkIfCorrect(guess) {
-
-}
 
 // ----->                                    <EVENT HANDLERS>
 
-//Process users guess
-function guessMadeHandler(letter) {
-    if (checkIfCorrect(letter)) {
-        game.incrementScore();
-    }
-    else {
-        game.useALife();
-    }
-
-    updateGameStats();
-}
-
-//Process game reset (reset lives_used and score to 0)
+//Process game reset (reset lives and score to 0)
 function resetGameHandler(game) {
     game.resetGame();
     for (i = 0; i < letterButtons.length; i++)
