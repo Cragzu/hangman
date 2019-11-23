@@ -16,50 +16,19 @@ function Button(label) {
     document.body.appendChild(this.btn);
 }
 
+function generateButtons() {
+    for (let i = 0; i < letters.length; i++) {
+        let currentLetter = letters[i];
+        new Button(currentLetter); // create a new button object
+    }
+}
+
+//generateButtons(); <-- Re-located to index.html
+
 function Word(name, definition) {
     this.name = name;
     this.definition = definition;
 }
-
-//Game object, holding the word, lives used, score
-function Game () {
-    this.lives_used = 0;
-    this.word = createWord();
-    this.score = 0;
-
-    resetLives: {
-        this.lives_used = 0;
-    }
-
-    incrementScore: {
-        this.score++;
-    }
-}
-
-/*Create the board:
-    - the instantiation of the letter buttons
-    - instantiation of the game object
- */
-let game = new Game();
-
-
-// Helper functions
-
-function updateScore(scoreChange) {
-    // game.score += scoreChange;
-    game.incrementScore();
-    document.getElementById("score").innerHTML = game.score;
-}
-
-function updateLives(lifeChange) {
-    game.lives += lifeChange;
-    document.getElementById("lives_used").innerHTML = game.lives;
-}
-
-// End of Helper functions
-
-/*wordBank*/
-// Scripts to handle word generation and display.
 
 let wordList = [
     new Word("committee", "A group of people in charge of something"),
@@ -74,25 +43,6 @@ let wordList = [
     new Word("corruption", "When there are problems in a political structure due to the personal " +
         "interests of politicians conflicting with the interests of the population.")
 ];
-
-// set hint boolean and variables containing refs to frequently accessed elements
-let hint = false;
-let definitionText = document.getElementById("definition");
-let hintButton = document.getElementById("hintButton");
-
-// Allow the hint-button to make the hints invisible or visible.
-function toggleVisibility() {
-    if (hint === false) {
-        definitionText.style.visibility= "visible";
-        hintButton.innerHTML = "hide hint";
-        hint = true;
-    }
-    else {
-        definitionText.style.visibility= "hidden";
-        hintButton.innerHTML = "display hint";
-        hint = false;
-    }
-}
 
 // Randomly select a word from the array
 function createWord() {
@@ -110,13 +60,62 @@ function createWord() {
     return word.toUpperCase(); // to pass to letter buttons
 }
 
+//Game object, holding the word, lives used, score
+function Game () {
+    this.lives_used = 0;
+    this.word = createWord();
+    this.score = 0;
+
+    resetGame: {
+        this.lives_used = 0;
+        this.score = 0;
+    }
+
+    incrementScore: {
+        this.score++;
+    }
+
+    useALife: {
+        this.lives++;
+    }
+}
+
+/*Create the board:
+    - the instantiation of the letter buttons
+    - instantiation of the game object
+ */
+let game = new Game();
+
+
+// Helper functions
+
+function updateGameStats() {
+    document.getElementById("score").innerHTML = game.score;
+    document.getElementById("lives_used").innerHTML = game.lives_used;
+}
+
+// End of Helper functions
+
+// set hint boolean and variables containing refs to frequently accessed elements
+let hint = false;
+let definitionText = document.getElementById("definition");
+
+// Allow the hint-button to make the hints invisible or visible.
+function toggleVisibility() {
+    if (hint === false) {
+        definitionText.style.visibility= "visible";
+        hintButton.innerHTML = "hide hint";
+        hint = true;
+    }
+    else {
+        definitionText.style.visibility= "hidden";
+        hintButton.innerHTML = "display hint";
+        hint = false;
+    }
+}
+
 // Make the word-button call a random word
-// var selectedWord = createWord(); // global variable, used throughout the game  <-- relocated to the Game constructor
 document.getElementById("makeWord").onclick = selectedWord;
-
-// Make the hint button bring up a hint
-hintButton.onclick = toggleVisibility;
-
 
 /*letterButton functions*/
 // Scripts to handle the letter buttons.
@@ -126,15 +125,6 @@ let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
     'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let testWord = selectedWord;
 console.log("Word is", testWord);
-
-function generateButtons() {
-    for (let i = 0; i < letters.length; i++) {
-        let currentLetter = letters[i];
-        new Button(currentLetter); // create a new button object
-    }
-}
-
-//generateButtons(); <-- Re-located to index.html
 
 //get user guess
 let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
@@ -147,22 +137,22 @@ function checkIfCorrect(guess) {
 /*EVENT HANDLERS*/
 
 //Process users guess
-function guessMadeHandler(guessedCorrectLetter) {
-    if (guessedCorrectLetter) {
-        updateScore(1);
+function guessMadeHandler(letter) {
+    if (checkIfCorrect(letter)) {
+        game.incrementScore();
     }
     else {
-        updateLives(-1);
+        game.useALife();
     }
+
+    updateGameStats();
 }
 
 //Process game reset (reset lives_used and score to 0)
 function resetGameHandler() {
-    game.resetLives();
-    game.score = 0;
+    game.resetGame();
 
-    document.getElementById("lives_used").innerHTML = "You've used: " + game.lives_used + " lives_used";
-    document.getElementById("score").innerText = game.score;
+    updateGameStats();
 }
 
 //Output the end-of-game

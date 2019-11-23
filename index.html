@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Hangman</title>
     <link href="style.css" rel="stylesheet" type="text/css"> <!--Import external stylesheet-->
+    <script src="gameDriver.js"></script>
 </head>
 
 <body>
@@ -30,14 +31,10 @@
 
 <h2 id = "definition">This is where a hint will appear for the word</h2>
 
-<!--import scripts-->
-<script src="wordBank.js"></script>
-<script src="letterButtons.js"></script>
-<script src="gameDriver.js"></script>
-
 <script>
     generateButtons();
     document.getElementById("resetBtn").onclick = resetGameHandler;
+    document.getElementById("hintButton").onclick = toggleVisibility;
 </script>
 </body>
 </html>
