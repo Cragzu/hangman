@@ -55,8 +55,8 @@ function createWord() {
     let word = wordObject.name;
     console.log("Created word: " + word);
 
-    definitionText.style.visibility="hidden";
-    hintButton.innerHTML = "display hint";
+    //definitionText.style.visibility="hidden";
+    // hintButton.innerHTML = "display hint";
 
     return word.toUpperCase(); // to pass to letter buttons
 }
@@ -114,16 +114,10 @@ function toggleVisibility() {
     }
 }
 
-// Make the word-button call a random word
-
-
-/*letterButton functions*/
 // Scripts to handle the letter buttons.
-let testWord = selectedWord;
-console.log("Word is", testWord);
 
 //get user guess
-let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
+// let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
 
 function checkIfCorrect(guess) {
 
