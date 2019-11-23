@@ -1,9 +1,53 @@
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
+// Object declarations
+function Button(label) {
+    this.btn = document.createElement("BUTTON");
+    this.btn.innerHTML = label;
+
+    this.btn.onclick = function() { // method for click behaviour
+        if (testWord.includes(label)) { // the guess was correct
+            this.className = "correctGuessButton"; // update button class to disable and change colour
+        }
+        else { // the guess was incorrect
+            this.className = "wrongGuessButton";
+        }
+    };
+    document.body.appendChild(this.btn);
+}
+
+function Word(name, definition) {
+    this.name = name;
+    this.definition = definition;
+}
+
+//Game object, holding the word, lives used, score
+function Game () {
+    this.lives_used = 0;
+    this.word = createWord();
+    this.score = 0;
+
+    resetLives: {
+        this.lives_used = 0;
+    }
+
+    incrementScore: {
+        this.score++;
+    }
+}
+
+/*Create the board:
+    - the instantiation of the letter buttons
+    - instantiation of the game object
+ */
+let game = new Game();
+
+
 // Helper functions
 
 function updateScore(scoreChange) {
-    game.score += scoreChange;
+    // game.score += scoreChange;
+    game.incrementScore();
     document.getElementById("score").innerHTML = game.score;
 }
 
@@ -16,11 +60,6 @@ function updateLives(lifeChange) {
 
 /*wordBank*/
 // Scripts to handle word generation and display.
-
-function Word(name, definition) {
-    this.name = name;
-    this.definition = definition;
-}
 
 let wordList = [
     new Word("committee", "A group of people in charge of something"),
@@ -88,21 +127,6 @@ let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
 let testWord = selectedWord;
 console.log("Word is", testWord);
 
-function Button(label) {
-    this.btn = document.createElement("BUTTON");
-    this.btn.innerHTML = label;
-
-    this.btn.onclick = function() { // method for click behaviour
-        if (testWord.includes(label)) { // the guess was correct
-            this.className = "correctGuessButton"; // update button class to disable and change colour
-        }
-        else { // the guess was incorrect
-            this.className = "wrongGuessButton";
-        }
-    };
-    document.body.appendChild(this.btn);
-}
-
 function generateButtons() {
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
@@ -112,26 +136,6 @@ function generateButtons() {
 
 //generateButtons(); <-- Re-located to index.html
 
-
-//Game object, holding the word, lives used, score
-function Game () {
-    this.lives_used = 0;
-    this.word = createWord();
-    this.score = 0;
-
-    resetLives: {
-        this.lives = 0;
-    }
-}
-
-/*Create the board:
-    - the instantiation of the letter buttons
-    - instantiation of the game object
- */
-let game = new Game();
-game.word = createWord();
-
-
 //get user guess
 let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
 document.getElementById("displayedWord").innerHTML = theWord
@@ -140,10 +144,6 @@ function checkIfCorrect(guess) {
 
 }
 
-//update score based on guess
-function updateScoreHandler(letter_occurrences) {
-
-}
 /*EVENT HANDLERS*/
 
 //Process users guess
@@ -158,7 +158,7 @@ function guessMadeHandler(guessedCorrectLetter) {
 
 //Process game reset (reset lives_used and score to 0)
 function resetGameHandler() {
-    game.lives_used = 0;
+    game.resetLives();
     game.score = 0;
 
     document.getElementById("lives_used").innerHTML = "You've used: " + game.lives_used + " lives_used";
