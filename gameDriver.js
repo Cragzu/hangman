@@ -18,6 +18,15 @@ function Game () {
 let game = new Game();
 game.word = createWord();
 
+
+//get user guess
+let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
+document.getElementById("displayedWord").innerHTML = theWord
+
+function checkIfCorrect(guess)
+
+//update score based on guess
+updateScoreHandler(letter_occurrences)
 /*EVENT HANDLERS*/
 
 //Process users guess
