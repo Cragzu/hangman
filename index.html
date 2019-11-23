@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Hangman</title>
     <link href="style.css" rel="stylesheet" type="text/css"> <!--Import external stylesheet-->
-    <script src="gameDriver.js"></script>
+    <script src="gameDriver.js"></script> <!-- Import JS scripts -->
 </head>
 
 <body>
@@ -15,16 +15,12 @@
     </div>
 </div>
 
-<div class="centerContainer">
-    <!-- <button id = "makeWord">Click to get a word.</button> --> <!-- No longer needed; page load will create a word automagically -->
-</div>
+<h2 id ="displayedWord"></h2> <!-- The selected word will be displayed here. Remove later or replace with underscores -->
 
-<h2 id ="displayedWord">This is where the random word will appear. Will want it invisible until the end.</h2>
-
-<div class="centerContainer">
+<div class="centerContainer"> <!--This will be updated to have nicer CSS soon-->
     <button id = "hintButton"> display hint</button>
     <button id = "resetBtn">Reset</button>
-    <p id="lives">You've used 50 lives_used </p>
+    <p id="lives">You've used 50 lives</p>
     <p>Score: </p>
     <p id="score">0</p>
 </div>

@@ -18,6 +18,9 @@ function Game () {
         this.score = 0;
         document.getElementById('score').innerHTML = game.score;
         document.getElementById('lives').innerHTML = game.lives_used;
+
+        for (i = 0; i < letterButtons.length; i++)
+            letterButtons[i].className = ''; // Remove classes from all buttons
     };
 
     this.incrementScore = function() {
@@ -58,14 +61,17 @@ function Button(label, word) {
     };
 }
 
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let letterButtons = []; // Store button refs in array for updates later
+
 function generateButtons(word) {
-    let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
         let b = new Button(currentLetter, word); // create a new button object
 
+        letterButtons.push(b.btn);
         document.body.appendChild(b.btn);
     }
 }
@@ -135,6 +141,8 @@ function guessMadeHandler(letter) {
 //Process game reset (reset lives_used and score to 0)
 function resetGameHandler(game) {
     game.resetGame();
+    for (i = 0; i < letterButtons.length; i++)
+        letterButtons[i].className = ''; // Remove classes from all buttons
 
     updateGameStats();
 }
