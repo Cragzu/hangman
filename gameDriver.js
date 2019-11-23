@@ -1,54 +1,6 @@
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
-//Game object, holding the word, lives used, score
-function Game () {
-    this.lives_used = 0;
-    this.word = '';
-    this.score = 0;
-
-    resetLives: {
-        this.lives = 0;
-    }
-}
-
-/*Create the board:
-    - the instantiation of the letter buttons
-    - instantiation of the game object
- */
-let game = new Game();
-game.word = createWord();
-
-
-//get user guess
-let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
-document.getElementById("displayedWord").innerHTML = theWord
-
-function checkIfCorrect(guess)
-
-//update score based on guess
-updateScoreHandler(letter_occurrences)
-/*EVENT HANDLERS*/
-
-//Process users guess
-function guessMadeHandler(guessedCorrectLetter) {
-    if (guessedCorrectLetter) {
-        updateScore(1);
-    }
-    else {
-        updateLives(-1);
-    }
-}
-
-//Process game reset (reset lives_used and score to 0)
-function resetGameHandler() {
-    game.lives_used = 0;
-    game.score = 0;
-
-    document.getElementById("lives_used").innerHTML = "You've used: " + game.lives_used + " lives_used";
-    document.getElementById("score").innerText = game.score;
-}
-
-/*Helper functions*/
+// Helper functions
 
 function updateScore(scoreChange) {
     game.score += scoreChange;
@@ -60,48 +12,7 @@ function updateLives(lifeChange) {
     document.getElementById("lives_used").innerHTML = game.lives;
 }
 
-//Output the end-of-game
-function endGame(didUserWin, element_id) {
-    if (didUserWin) {
-        document.getElementById(element_id).innerHTML = "Wow! You won! Press reset to play again";
-    }
-    else {
-        document.getElementById(element_id).innerHTML = "You've lost!";
-    }
-}
-
-/*letterButton functions*/
-// Scripts to handle the letter buttons.
-
-// Dynamically generate between 0 and 26 buttons with letters of the alphabet.
-let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-let testWord = selectedWord;
-console.log("Word is", testWord);
-
-function Button(label) {
-    this.btn = document.createElement("BUTTON");
-    this.btn.innerHTML = label;
-
-    this.btn.onclick = function() { // method for click behaviour
-        if (testWord.includes(label)) { // the guess was correct
-            this.className = "correctGuessButton"; // update button class to disable and change colour
-        }
-        else { // the guess was incorrect
-            this.className = "wrongGuessButton";
-        }
-    };
-    document.body.appendChild(this.btn);
-}
-
-function generateButtons() {
-    for (let i = 0; i < letters.length; i++) {
-        let currentLetter = letters[i];
-        new Button(currentLetter); // create a new button object
-    }
-}
-
-generateButtons();
+// End of Helper functions
 
 /*wordBank*/
 // Scripts to handle word generation and display.
@@ -161,8 +72,105 @@ function createWord() {
 }
 
 // Make the word-button call a random word
-var selectedWord = createWord(); // global variable, used throughout the game
+// var selectedWord = createWord(); // global variable, used throughout the game  <-- relocated to the Game constructor
 document.getElementById("makeWord").onclick = selectedWord;
 
 // Make the hint button bring up a hint
 hintButton.onclick = toggleVisibility;
+
+
+/*letterButton functions*/
+// Scripts to handle the letter buttons.
+
+// Dynamically generate between 0 and 26 buttons with letters of the alphabet.
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let testWord = selectedWord;
+console.log("Word is", testWord);
+
+function Button(label) {
+    this.btn = document.createElement("BUTTON");
+    this.btn.innerHTML = label;
+
+    this.btn.onclick = function() { // method for click behaviour
+        if (testWord.includes(label)) { // the guess was correct
+            this.className = "correctGuessButton"; // update button class to disable and change colour
+        }
+        else { // the guess was incorrect
+            this.className = "wrongGuessButton";
+        }
+    };
+    document.body.appendChild(this.btn);
+}
+
+function generateButtons() {
+    for (let i = 0; i < letters.length; i++) {
+        let currentLetter = letters[i];
+        new Button(currentLetter); // create a new button object
+    }
+}
+
+//generateButtons(); <-- Re-located to index.html
+
+
+//Game object, holding the word, lives used, score
+function Game () {
+    this.lives_used = 0;
+    this.word = createWord();
+    this.score = 0;
+
+    resetLives: {
+        this.lives = 0;
+    }
+}
+
+/*Create the board:
+    - the instantiation of the letter buttons
+    - instantiation of the game object
+ */
+let game = new Game();
+game.word = createWord();
+
+
+//get user guess
+let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
+document.getElementById("displayedWord").innerHTML = theWord
+
+function checkIfCorrect(guess) {
+
+}
+
+//update score based on guess
+function updateScoreHandler(letter_occurrences) {
+
+}
+/*EVENT HANDLERS*/
+
+//Process users guess
+function guessMadeHandler(guessedCorrectLetter) {
+    if (guessedCorrectLetter) {
+        updateScore(1);
+    }
+    else {
+        updateLives(-1);
+    }
+}
+
+//Process game reset (reset lives_used and score to 0)
+function resetGameHandler() {
+    game.lives_used = 0;
+    game.score = 0;
+
+    document.getElementById("lives_used").innerHTML = "You've used: " + game.lives_used + " lives_used";
+    document.getElementById("score").innerText = game.score;
+}
+
+//Output the end-of-game
+function endGame(didUserWin, element_id) {
+    if (didUserWin) {
+        document.getElementById(element_id).innerHTML = "Wow! You won! Press reset to play again";
+    }
+    else {
+        document.getElementById(element_id).innerHTML = "You've lost!";
+    }
+}
