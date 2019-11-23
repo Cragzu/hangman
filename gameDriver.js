@@ -42,6 +42,8 @@ function Game () {
     };
 }
 
+//          <Generate Letter Buttons>
+
 function Button(label, word) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
@@ -68,12 +70,14 @@ function generateButtons(word) {
     }
 }
 
-// noinspection DuplicatedCode
+//          <Select random word with definition>
+
 function Word(name, definition) {
     this.name = name;
     this.definition = definition;
 }
 
+// Array of word objects to pick from
 let wordList = [
     new Word("committee", "A group of people in charge of something"),
     new Word("happy", "How you feel when you do well on an assignment"),
