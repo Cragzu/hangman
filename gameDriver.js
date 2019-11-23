@@ -1,6 +1,10 @@
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
-// Object declarations
+// Object and other variable declarations
+// Dynamically generate between 0 and 26 buttons with letters of the alphabet.
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
 function Button(label) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
@@ -49,12 +53,9 @@ function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let wordObject = wordList[randomNumber];
     let word = wordObject.name;
-    console.log(word);
+    console.log("Created word: " + word);
 
     definitionText.style.visibility="hidden";
-    document.getElementById("displayedWord").innerHTML = word;
-    definitionText.innerHTML = wordObject.definition;
-    console.log('description:', wordObject.definition);
     hintButton.innerHTML = "display hint";
 
     return word.toUpperCase(); // to pass to letter buttons
@@ -86,7 +87,6 @@ function Game () {
  */
 let game = new Game();
 
-
 // Helper functions
 
 function updateGameStats() {
@@ -98,7 +98,7 @@ function updateGameStats() {
 
 // set hint boolean and variables containing refs to frequently accessed elements
 let hint = false;
-let definitionText = document.getElementById("definition");
+//let definitionText = document.getElementById("definition");
 
 // Allow the hint-button to make the hints invisible or visible.
 function toggleVisibility() {
@@ -115,20 +115,15 @@ function toggleVisibility() {
 }
 
 // Make the word-button call a random word
-document.getElementById("makeWord").onclick = selectedWord;
+
 
 /*letterButton functions*/
 // Scripts to handle the letter buttons.
-
-// Dynamically generate between 0 and 26 buttons with letters of the alphabet.
-let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 let testWord = selectedWord;
 console.log("Word is", testWord);
 
 //get user guess
-let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
-document.getElementById("displayedWord").innerHTML = theWord
+let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
 
 function checkIfCorrect(guess) {
 

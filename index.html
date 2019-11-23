@@ -16,7 +16,7 @@
 </div>
 
 <div class="centerContainer">
-    <button id = "makeWord">Click to get a word.</button>
+    <!-- <button id = "makeWord">Click to get a word.</button> --> <!-- No longer needed; page load will create a word automagically -->
 </div>
 
 <h2 id ="displayedWord">This is where the random word will appear. Will want it invisible until the end.</h2>
@@ -35,6 +35,10 @@
     generateButtons();
     document.getElementById("resetBtn").onclick = resetGameHandler;
     document.getElementById("hintButton").onclick = toggleVisibility;
+
+    game = new Game();
+
+    document.getElementById("displayedWord").innerHTML = theWord;
 </script>
 </body>
 </html>
