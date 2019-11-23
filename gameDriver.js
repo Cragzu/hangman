@@ -29,6 +29,11 @@ let letter_occurrences = 0;
 document.getElementById("resetBtn").onclick = resetGameHandler;
 
 //get user guess
+let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length)
+document.getElementById("displayedWord").innerHTML = theWord
+
+function checkIfCorrect(guess)
+    
 //update score based on guess
 updateScoreHandler(letter_occurrences)
 

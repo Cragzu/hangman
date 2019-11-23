@@ -47,6 +47,9 @@ function createWord(){
     document.getElementById("displayedWord").innerHTML = selectedWord.name;
     definitionText.innerHTML = selectedWord.definition;
     hintButton.innerHTML = "display hint";
+
+    let theWord = '_'.repeat(selectedWord.name.length)
+    document.getElementById("displayedWord").innerHTML = theWord
 }
 
 // Make the word-button call a random word
