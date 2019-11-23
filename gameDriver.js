@@ -1,9 +1,9 @@
 // Scripts to run the game, keep track of score and lives_used, and reset.
 
-// Object and other variable declarations
-// Dynamically generate between 0 and 26 buttons with letters of the alphabet.
-let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
-    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+// ----->                                OBJECT and other VARIABLE declarations
+
+// set hint boolean and variables containing refs to frequently accessed elements
+let hint = false; // Put this into Game
 
 function Button(label) {
     this.btn = document.createElement("BUTTON");
@@ -17,18 +17,23 @@ function Button(label) {
             this.className = "wrongGuessButton";
         }
     };
-    document.body.appendChild(this.btn);
 }
 
 function generateButtons() {
+    let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
-        new Button(currentLetter); // create a new button object
+        let b = new Button(currentLetter); // create a new button object
+
+        document.body.appendChild(b.btn);
     }
 }
 
 //generateButtons(); <-- Re-located to index.html
 
+// noinspection DuplicatedCode
 function Word(name, definition) {
     this.name = name;
     this.definition = definition;
@@ -66,6 +71,7 @@ function Game () {
     this.lives_used = 0;
     this.word = createWord();
     this.score = 0;
+    this.hint = false;
 
     resetGame: {
         this.lives_used = 0;
@@ -79,40 +85,33 @@ function Game () {
     useALife: {
         this.lives++;
     }
+
+    toggleHint: {
+        if (this.hint === false) {
+            definitionText.style.visibility= "visible";
+            hintButton.innerHTML = "hide hint";
+            this.hint = true;
+        }
+        else {
+            definitionText.style.visibility= "hidden";
+            hintButton.innerHTML = "display hint";
+            this.hint = false;
+        }
+    }
 }
 
-/*Create the board:
-    - the instantiation of the letter buttons
-    - instantiation of the game object
- */
-let game = new Game();
-
-// Helper functions
+// ----->                                   <HELPER FUNCTIONS>
 
 function updateGameStats() {
     document.getElementById("score").innerHTML = game.score;
     document.getElementById("lives_used").innerHTML = game.lives_used;
 }
 
-// End of Helper functions
+// ----->                                   </HELPER FUNCTIONS>
 
-// set hint boolean and variables containing refs to frequently accessed elements
-let hint = false;
+
+
 //let definitionText = document.getElementById("definition");
-
-// Allow the hint-button to make the hints invisible or visible.
-function toggleVisibility() {
-    if (hint === false) {
-        definitionText.style.visibility= "visible";
-        hintButton.innerHTML = "hide hint";
-        hint = true;
-    }
-    else {
-        definitionText.style.visibility= "hidden";
-        hintButton.innerHTML = "display hint";
-        hint = false;
-    }
-}
 
 // Scripts to handle the letter buttons.
 
@@ -123,7 +122,7 @@ function checkIfCorrect(guess) {
 
 }
 
-/*EVENT HANDLERS*/
+// ----->                                    <EVENT HANDLERS>
 
 //Process users guess
 function guessMadeHandler(letter) {
@@ -144,6 +143,20 @@ function resetGameHandler() {
     updateGameStats();
 }
 
+// Allow the hint-button to make the hints invisible or visible.
+function toggleHintVisibility() {
+    if (hint === false) {
+        definitionText.style.visibility= "visible";
+        hintButton.innerHTML = "hide hint";
+        hint = true;
+    }
+    else {
+        definitionText.style.visibility= "hidden";
+        hintButton.innerHTML = "display hint";
+        hint = false;
+    }
+} // Put this into Game
+
 //Output the end-of-game
 function endGame(didUserWin, element_id) {
     if (didUserWin) {
@@ -153,3 +166,4 @@ function endGame(didUserWin, element_id) {
         document.getElementById(element_id).innerHTML = "You've lost!";
     }
 }
+// ----->                                    </EVENT HANDLERS>

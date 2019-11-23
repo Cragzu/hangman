@@ -34,8 +34,9 @@
 <script>
     generateButtons();
     document.getElementById("resetBtn").onclick = resetGameHandler;
-    document.getElementById("hintButton").onclick = toggleVisibility;
+    document.getElementById("hintButton").onclick = toggleHintVisibility;
 
+    // "Start" a new game
     game = new Game();
 
     document.getElementById("displayedWord").innerHTML = game.word;
