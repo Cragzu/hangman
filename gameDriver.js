@@ -85,7 +85,7 @@ let wordList = [
         "interests of politicians conflicting with the interests of the population.")
 ];
 
-// Randomly select a word from the array
+// Select a random word
 function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let wordObject = wordList[randomNumber];
@@ -100,6 +100,7 @@ function createWord() {
 
 // ----->                                   <HELPER FUNCTIONS>
 
+// Re-display score and lives
 function updateGameStats() {
     document.getElementById("score").innerHTML = game.score;
     document.getElementById("lives_used").innerHTML = game.lives_used;
@@ -112,6 +113,8 @@ function updateGameStats() {
 //get user guess
 // let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
 
+// Compare the users guess to the word
+// NOTE: ensure that the onclick function of Button meshes well with this function (maybe place the function invocation there)
 function checkIfCorrect(guess) {
 
 }
@@ -137,7 +140,7 @@ function resetGameHandler() {
     updateGameStats();
 }
 
-// Allow the hint-button to make the hints invisible or visible.
+// Make the hints invisible or visible.
 function toggleHintVisibility() {
     if (hint === false) {
         document.getElementById("definition").style.visibility= "visible";
