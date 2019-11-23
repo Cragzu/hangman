@@ -89,13 +89,13 @@ let wordList = [
 function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let wordObject = wordList[randomNumber];
-    let word = wordObject.name;
-    console.log("Created word: " + word);
+
+    console.log("Created word: " + wordObject.name);
 
     //definitionText.style.visibility="hidden";
     // hintButton.innerHTML = "display hint";
 
-    return word.toUpperCase(); // to pass to letter buttons
+    return wordObject.name.toUpperCase(); // to pass to letter buttons
 }
 
 // ----->                                   <HELPER FUNCTIONS>
