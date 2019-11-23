@@ -51,7 +51,11 @@ function createWord() {
     console.log('description:', wordObject.definition);
     hintButton.innerHTML = "display hint";
 
+    let theWord = '_'.repeat(selectedWord.name.length)
+    document.getElementById("displayedWord").innerHTML = theWord
+
     return word.toUpperCase(); // to pass to letter buttons
+
 }
 
 // Make the word-button call a random word
