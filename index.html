@@ -23,9 +23,9 @@
 <div class="centerContainer">
     <button id = "hintButton"> display hint</button>
     <button id = "resetBtn">Reset</button>
-    <p id="lives">You've used 0 lives </p>
+    <p id="lives">You've used 0 lives_used </p>
     <p>Score: </p>
-    <p id="score">0</p>
+    <p id="score">5000</p>
 </div>
 
 <h2 id = "definition">This is where a hint will appear for the word</h2>
@@ -35,5 +35,8 @@
 <script src="letterButtons.js"></script>
 <script src="gameDriver.js"></script>
 
+<script>
+    document.getElementById("resetBtn").onclick = resetGameHandler;
+</script>
 </body>
 </html>

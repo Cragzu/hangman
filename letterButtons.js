@@ -3,10 +3,10 @@
 // Dynamically generate between 0 and 26 buttons with letters of the alphabet.
 let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
     'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-let testWord = "ORANGE"; // todo: remove later
+let testWord = selectedWord;
+console.log("Word is", testWord);
 
 function Button(label) {
-
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
 
