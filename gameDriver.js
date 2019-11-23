@@ -5,12 +5,46 @@
 // set hint boolean and variables containing refs to frequently accessed elements
 let hint = false; // Put this into Game
 
-function Button(label) {
+//Game object, holding the word, lives used, score
+function Game () {
+    this.lives_used = 0;
+    this.word = createWord();
+    this.score = 0;
+    this.hint = false;
+
+    resetGame: {
+        this.lives_used = 0;
+        this.score = 0;
+    }
+
+    incrementScore: {
+        this.score++;
+    }
+
+    useALife: {
+        this.lives++;
+    }
+
+    toggleHint: {
+        if (this.hint === false) {
+            document.getElementById("definition").style.visibility= "visible";
+            hintButton.innerHTML = "hide hint";
+            this.hint = true;
+        }
+        else {
+            document.getElementById("definition").style.visibility= "hidden";
+            hintButton.innerHTML = "display hint";
+            this.hint = false;
+        }
+    }
+}
+
+function Button(label, word) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
 
     this.btn.onclick = function() { // method for click behaviour
-        if (testWord.includes(label)) { // the guess was correct
+        if (word.includes(label)) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
         }
         else { // the guess was incorrect
@@ -19,19 +53,17 @@ function Button(label) {
     };
 }
 
-function generateButtons() {
+function generateButtons(word) {
     let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
         'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
-        let b = new Button(currentLetter); // create a new button object
+        let b = new Button(currentLetter, word); // create a new button object
 
         document.body.appendChild(b.btn);
     }
 }
-
-//generateButtons(); <-- Re-located to index.html
 
 // noinspection DuplicatedCode
 function Word(name, definition) {
@@ -66,40 +98,6 @@ function createWord() {
     return word.toUpperCase(); // to pass to letter buttons
 }
 
-//Game object, holding the word, lives used, score
-function Game () {
-    this.lives_used = 0;
-    this.word = createWord();
-    this.score = 0;
-    this.hint = false;
-
-    resetGame: {
-        this.lives_used = 0;
-        this.score = 0;
-    }
-
-    incrementScore: {
-        this.score++;
-    }
-
-    useALife: {
-        this.lives++;
-    }
-
-    toggleHint: {
-        if (this.hint === false) {
-            definitionText.style.visibility= "visible";
-            hintButton.innerHTML = "hide hint";
-            this.hint = true;
-        }
-        else {
-            definitionText.style.visibility= "hidden";
-            hintButton.innerHTML = "display hint";
-            this.hint = false;
-        }
-    }
-}
-
 // ----->                                   <HELPER FUNCTIONS>
 
 function updateGameStats() {
@@ -108,10 +106,6 @@ function updateGameStats() {
 }
 
 // ----->                                   </HELPER FUNCTIONS>
-
-
-
-//let definitionText = document.getElementById("definition");
 
 // Scripts to handle the letter buttons.
 
@@ -146,12 +140,12 @@ function resetGameHandler() {
 // Allow the hint-button to make the hints invisible or visible.
 function toggleHintVisibility() {
     if (hint === false) {
-        definitionText.style.visibility= "visible";
+        document.getElementById("definition").style.visibility= "visible";
         hintButton.innerHTML = "hide hint";
         hint = true;
     }
     else {
-        definitionText.style.visibility= "hidden";
+        document.getElementById("definition").style.visibility= "hidden";
         hintButton.innerHTML = "display hint";
         hint = false;
     }

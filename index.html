@@ -32,12 +32,11 @@
 <h2 id = "definition">This is where a hint will appear for the word</h2>
 
 <script>
-    generateButtons();
-    document.getElementById("resetBtn").onclick = resetGameHandler;
-    document.getElementById("hintButton").onclick = toggleHintVisibility;
-
     // "Start" a new game
     game = new Game();
+    generateButtons(game.word);
+    document.getElementById("resetBtn").onclick = resetGameHandler;
+    document.getElementById("hintButton").onclick = toggleHintVisibility;
 
     document.getElementById("displayedWord").innerHTML = game.word;
 </script>
