@@ -18,12 +18,21 @@ h1, h2, h3 {
     font-family: "Sylfaen";
     text-align: center;
 }
+p {
+    font-family: "Sylfaen";
+    font-size: 20px;
+}
 .centerContainer {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .innerTextContainer {
     display: block;
+}
+.inlineContainer {
+    display: flex;
+    flex-direction: row;
 }
 .correctGuessButton {
     background-color: palegreen;
@@ -36,4 +45,9 @@ h1, h2, h3 {
     color: darkred;
     cursor: not-allowed;
     pointer-events: none;
+}
+.topLeftContainer {
+    position: fixed;
+    top: 30px;
+    left: 40px;
 }

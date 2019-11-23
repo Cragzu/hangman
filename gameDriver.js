@@ -16,8 +16,8 @@ function Game () {
     this.resetGame = function() {
         this.lives = 0;
         this.score = 0;
-        document.getElementById('score').innerHTML = game.score;
-        document.getElementById('lives').innerHTML = game.lives;
+        document.getElementById('score').innerHTML = this.score;
+        document.getElementById('lives').innerHTML = this.lives;
 
         for (i = 0; i < letterButtons.length; i++)
             letterButtons[i].className = ''; // Remove classes from all buttons
@@ -78,7 +78,7 @@ function generateButtons(word) {
         let b = new Button(currentLetter, word); // create a new button object
 
         letterButtons.push(b.btn);
-        document.body.appendChild(b.btn);
+        document.getElementById('letterButtonContainer').appendChild(b.btn);
     }
 }
 

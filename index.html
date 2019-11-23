@@ -10,8 +10,14 @@
 <body>
 <div class="centerContainer">
     <div class="innerTextContainer">
+
+        <div class="topLeftContainer">
+            <button id = "resetBtn">Reset</button>
+        </div>
+
         <h1>Hangman</h1>
         <h2>Brought to you by Fist Bump Inc</h2>
+
     </div>
 </div>
 
@@ -19,13 +25,29 @@
 
 <div class="centerContainer"> <!--This will be updated to have nicer CSS soon-->
     <button id = "hintButton"> display hint</button>
-    <button id = "resetBtn">Reset</button>
-    <p id="lives">You've used 50 lives</p>
-    <p>Score: </p>
-    <p id="score">0</p>
 </div>
 
-<h2 id = "definition">This is where a hint will appear for the word</h2>
+<div class="centerContainer">
+    <div class="innerTextContainer">
+
+        <div class="inlineContainer">
+            <p id="livesText">Lives remaining: &nbsp;</p>
+            <p id="livesValue">Lives value</p>
+        </div>
+
+        <div class="inlineContainer">
+            <p id="scoreText">Score: &nbsp;</p>
+            <p id="scoreValue">Score value</p>
+        </div>
+
+
+    </div>
+
+</div>
+
+<h2 id = "definition"></h2> <!--This is where a hint will appear for the word-->
+
+<div class="centerContainer" id="letterButtonContainer"></div> <!--This is where the letter buttons will go-->
 
 <script>
     // "Start" a new game
