@@ -24,7 +24,7 @@
 <div class="centerContainer">
     <button id = "hintButton"> display hint</button>
     <button id = "resetBtn">Reset</button>
-    <p id="lives">You've used 0 lives_used </p>
+    <p id="lives">You've used 50 lives_used </p>
     <p>Score: </p>
     <p id="score">0</p>
 </div>
@@ -34,8 +34,9 @@
 <script>
     // "Start" a new game
     game = new Game();
+
     generateButtons(game.word);
-    document.getElementById("resetBtn").onclick = resetGameHandler;
+    document.getElementById("resetBtn").onclick = game.resetGame;
     document.getElementById("hintButton").onclick = toggleHintVisibility;
 
     document.getElementById("displayedWord").innerHTML = game.word;

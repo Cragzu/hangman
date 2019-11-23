@@ -12,20 +12,23 @@ function Game () {
     this.score = 0;
     this.hint = false;
 
-    resetGame: {
+    // These functions aren't resolvable.... I've no idea why not
+    this.resetGame = function() {
         this.lives_used = 0;
         this.score = 0;
-    }
+        document.getElementById('score').innerHTML = game.score;
+        document.getElementById('lives').innerHTML = game.lives_used;
+    };
 
-    incrementScore: {
+    this.incrementScore = function() {
         this.score++;
-    }
+    };
 
-    useALife: {
+    this.useALife = function() {
         this.lives++;
-    }
+    };
 
-    toggleHint: {
+    this.toggleHint = function() {
         if (this.hint === false) {
             document.getElementById("definition").style.visibility= "visible";
             hintButton.innerHTML = "hide hint";
@@ -36,7 +39,7 @@ function Game () {
             hintButton.innerHTML = "display hint";
             this.hint = false;
         }
-    }
+    };
 }
 
 function Button(label, word) {
@@ -100,15 +103,7 @@ function createWord() {
 
 // ----->                                   <HELPER FUNCTIONS>
 
-// Re-display score and lives
-function updateGameStats() {
-    document.getElementById("score").innerHTML = game.score;
-    document.getElementById("lives_used").innerHTML = game.lives_used;
-}
-
 // ----->                                   </HELPER FUNCTIONS>
-
-// Scripts to handle the letter buttons.
 
 //get user guess
 // let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
@@ -134,7 +129,7 @@ function guessMadeHandler(letter) {
 }
 
 //Process game reset (reset lives_used and score to 0)
-function resetGameHandler() {
+function resetGameHandler(game) {
     game.resetGame();
 
     updateGameStats();
