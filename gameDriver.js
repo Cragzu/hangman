@@ -112,7 +112,8 @@ function createWord() {
     console.log("Created word: " + wordObject.name);
 
     //definitionText.style.visibility="hidden";
-    // hintButton.innerHTML = "display hint";
+    document.getElementById('definition').innerHTML = wordObject.definition;
+
 
     return wordObject.name.toUpperCase(); // to pass to letter buttons
 }
