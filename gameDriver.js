@@ -12,12 +12,16 @@ function Game () {
     this.score = 0;
     this.hint = false;
 
+    document.getElementById('scoreValue').innerHTML = this.score;
+    document.getElementById('livesValue').innerHTML = this.lives;
+
     // These functions aren't resolvable.... I've no idea why not
     this.resetGame = function() {
-        this.lives = 0;
+        console.log('Reset button clicked!');
+        this.lives = 7;
         this.score = 0;
-        document.getElementById('score').innerHTML = this.score;
-        document.getElementById('lives').innerHTML = this.lives;
+        document.getElementById('scoreValue').innerHTML = this.score;
+        document.getElementById('livesValue').innerHTML = this.lives;
 
         for (i = 0; i < letterButtons.length; i++)
             letterButtons[i].className = ''; // Remove classes from all buttons
@@ -25,10 +29,12 @@ function Game () {
 
     this.incrementScore = function() {
         this.score++;
+        document.getElementById('scoreValue').innerHTML = this.score;
     };
 
     this.useALife = function() {
         this.lives--;
+        document.getElementById('livesValue').innerHTML = this.lives;
     };
 
     this.toggleHint = function() {
