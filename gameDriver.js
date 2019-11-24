@@ -34,12 +34,10 @@ function Game () {
 
     this.useALife = function() {
         this.lives--;
-        if (this.lives <= 0) {
-            endGame(false, 'endGameText')
+        if (this.lives < 0) {
+            endGame(false, 'displayedWord')
         }
-        else {
-            document.getElementById('livesValue').innerHTML = this.lives;
-        }
+        document.getElementById('livesValue').innerHTML = this.lives;
     };
 
     this.toggleHint = function() {
