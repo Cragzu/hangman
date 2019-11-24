@@ -50,6 +50,8 @@ function Game () {
             document.getElementById("definition").style.visibility= "hidden";
             hintButton.innerHTML = "display hint";
             this.hint = false;
+
+    
         }
     };
 }
@@ -109,6 +111,7 @@ let wordList = [
         "interests of politicians conflicting with the interests of the population.")
 ];
 
+
 // Select a random word
 function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
@@ -156,13 +159,17 @@ function toggleHintVisibility() {
     }
 } // Put this into Game
 
+function startSession(){
+    document.getElementsByClassName("notshowingyet").style.display = "block";
+    document.getElementsByClassName("showing").style.display = "none";
+}
 //Output the end-of-game
 function endGame(didUserWin, element_id) {
     if (didUserWin) {
         document.getElementById(element_id).innerHTML = "Wow! You won! Press reset to play again";
     }
     else {
-        document.getElementById(element_id).innerHTML = "You've lost!";
+        document.getElementById(element_id).innerHTML = `You've lost! The word was "${game.word}"`;
     }
 }
 // ----->                                    </EVENT HANDLERS>
