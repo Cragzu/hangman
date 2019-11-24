@@ -34,7 +34,12 @@ function Game () {
 
     this.useALife = function() {
         this.lives--;
-        document.getElementById('livesValue').innerHTML = this.lives;
+        if (this.lives <= 0) {
+            endGame(false, 'endGameText')
+        }
+        else {
+            document.getElementById('livesValue').innerHTML = this.lives;
+        }
     };
 
     this.toggleHint = function() {
@@ -61,15 +66,11 @@ function Button(label, word) {
         if (word.includes(label)) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
             game.incrementScore();
-            console.log('Score:', game.score)
         }
         else { // the guess was incorrect
             this.className = "wrongGuessButton";
             game.useALife();
-            console.log('Lives: ', game.lives)
         }
-        
-        // updateGameStats(); This function doesn't exist..
     };
 }
 
@@ -125,8 +126,6 @@ function createWord() {
 }
 
 // ----->                                   <HELPER FUNCTIONS>
-
-// ----->                                   </HELPER FUNCTIONS>
 
 //get user guess
 // let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
