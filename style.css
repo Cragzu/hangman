@@ -1,0 +1,61 @@
+/*Overall elements*/
+body {
+    background-color: gainsboro;
+}
+button {
+    width: auto;
+    height: auto;
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Times New Roman", serif;
+    background-color: darkgray;
+    cursor: pointer;
+    pointer-events: all;
+}
+h1, h2, h3 {
+    font-family: "Sylfaen", serif;
+    text-align: center;
+}
+p {
+    font-family: "Sylfaen", serif;
+    font-size: 20px;
+}
+
+/*Classes*/
+.centerContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.innerTextContainer {
+    display: block;
+}
+.inlineContainer {
+    display: flex;
+    flex-direction: row;
+}
+.topLeftContainer {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+}
+.correctGuessButton {
+    background-color: palegreen;
+    color: darkgreen;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.wrongGuessButton {
+    background-color: indianred;
+    color: darkred;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/*IDs*/
+#definition {
+    visibility: hidden;
+}
