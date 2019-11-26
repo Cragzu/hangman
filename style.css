@@ -54,16 +54,15 @@ p {
     cursor: not-allowed;
     pointer-events: none;
 }
-
-/*IDs*/
-#definition {
-    visibility: hidden;
-}
-
 .notshowingyet{
-    visibility:hidden;
+    visibility: hidden;
 }
 
 .showing{
     visibility: visible;
+}
+
+/*IDs*/
+#definition {
+    visibility: hidden;
 }
