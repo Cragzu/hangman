@@ -8,9 +8,11 @@ let hint = false; // Put this into Game
 //Game object, holding the word, lives used, score
 function Game () {
     this.lives = 7;
-    this.word = createWord();
+    this.word = createWord().toLowerCase();
     this.score = 0;
     this.hint = false;
+    this.lettersLeft = this.word.length;
+    this.wordArray = this.word.split('');
 
     document.getElementById('scoreValue').innerHTML = this.score;
     document.getElementById('livesValue').innerHTML = this.lives;
@@ -27,14 +29,9 @@ function Game () {
             letterButtons[i].className = ''; // Remove classes from all buttons
     };
 
-    this.incrementScore = function() {
-        this.score++;
-        document.getElementById('scoreValue').innerHTML = this.score;
-    };
-
     this.useALife = function() {
         this.lives--;
-        if (this.lives < 0) {
+        if (this.lives === 0) {
             endGame(false, 'displayedWord')
         }
         document.getElementById('livesValue').innerHTML = this.lives;
@@ -54,6 +51,25 @@ function Game () {
     
         }
     };
+
+    this.correctLetterChosen = function(letter) {
+        this.score++;
+
+        for (let i = 0; i < this.wordArray.length; i++) {
+            if (this.wordArray[i] === letter) {
+                this.lettersLeft--;
+                console.log("Reduced lettersLeft to " + this.lettersLeft);
+            }
+        }
+
+        if (this.lettersLeft === 0) {
+            endGame(true, 'displayedWord');
+        }
+        else {
+            console.log("You got " + this.lettersLeft + " left");
+        }
+
+    };
 }
 
 //          <Generate Letter Buttons>
@@ -63,9 +79,10 @@ function Button(label, word) {
     this.btn.innerHTML = label;
 
     this.btn.onclick = function() { // method for click behaviour
-        if (word.includes(label)) { // the guess was correct
+        if (word.includes(label.toLowerCase())) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
-            game.incrementScore();
+            // game.incrementScore();
+            game.correctLetterChosen(label.toLowerCase());
         }
         else { // the guess was incorrect
             this.className = "wrongGuessButton";
