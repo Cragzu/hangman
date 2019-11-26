@@ -17,16 +17,18 @@ function Game () {
     document.getElementById('scoreValue').innerHTML = this.score;
     document.getElementById('livesValue').innerHTML = this.lives;
 
-    // These functions aren't resolvable.... I've no idea why not
     this.resetGame = function() {
-        console.log('Reset button clicked!');
         this.lives = 7;
         this.score = 0;
+
         document.getElementById('scoreValue').innerHTML = this.score;
         document.getElementById('livesValue').innerHTML = this.lives;
 
-        for (i = 0; i < letterButtons.length; i++)
-            letterButtons[i].className = ''; // Remove classes from all buttons
+        this.word = createWord().toLowerCase();
+
+        document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
+        generateButtons(this.word);
+
     };
 
     this.useALife = function() {
@@ -47,8 +49,6 @@ function Game () {
             document.getElementById("definition").style.visibility= "hidden";
             hintButton.innerHTML = "display hint";
             this.hint = false;
-
-    
         }
     };
 
@@ -147,15 +147,6 @@ function createWord() {
 // NOTE: ensure that the onclick function of Button meshes well with this function (maybe place the function invocation there)
 
 // ----->                                    <EVENT HANDLERS>
-
-//Process game reset (reset lives and score to 0)
-function resetGameHandler(game) {
-    game.resetGame();
-    for (i = 0; i < letterButtons.length; i++)
-        letterButtons[i].className = ''; // Remove classes from all buttons
-
-    updateGameStats();
-}
 
 // Make the hints invisible or visible.
 function toggleHintVisibility() {
