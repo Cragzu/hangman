@@ -58,17 +58,12 @@ function Game () {
         for (let i = 0; i < this.wordArray.length; i++) {
             if (this.wordArray[i] === letter) {
                 this.lettersLeft--;
-                console.log("Reduced lettersLeft to " + this.lettersLeft);
             }
         }
 
         if (this.lettersLeft === 0) {
             endGame(true, 'displayedWord');
         }
-        else {
-            console.log("You got " + this.lettersLeft + " left");
-        }
-
     };
 }
 
