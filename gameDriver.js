@@ -60,6 +60,7 @@ function Game () {
                 this.lettersLeft--;
             }
         }
+        document.getElementById('scoreValue').innerHTML = this.score;
 
         if (this.lettersLeft === 0) {
             endGame(true, 'displayedWord');
