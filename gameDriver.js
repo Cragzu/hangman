@@ -23,6 +23,7 @@ function Game () {
 
         document.getElementById('scoreValue').innerHTML = this.score;
         document.getElementById('livesValue').innerHTML = this.lives;
+        document.getElementById('displayed_word').innerHTML = '';
 
         this.word = createWord().toLowerCase();
 
