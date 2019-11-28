@@ -14,6 +14,11 @@ function Game () {
     this.lettersLeft = this.word.length;
     this.wordArray = this.word.split('');
 
+    // Update lives and score display. This should only be called the Game functions themselves.
+    this.updateStats = function () {
+        document.getElementById('scoreValue').innerHTML = this.score;
+        document.getElementById('livesValue').innerHTML = this.lives;
+
     this.updateStats();
 
     this.useALife = function() {
@@ -62,11 +67,6 @@ function Game () {
 
         this.updateStats();
     };
-
-    // Update lives and score display. This should only be called the Game functions themselves.
-    this.updateStats = function () {
-        document.getElementById('scoreValue').innerHTML = this.score;
-        document.getElementById('livesValue').innerHTML = this.lives;
     };
 }
 

@@ -34,7 +34,7 @@ p {
     h2, h3, p {
         font-size: 4vh;
     }
-    body { /*For testing purposes, remove later*/
+    body { /*todo: For testing purposes, remove later*/
         background-color: indianred;
     }
 }
