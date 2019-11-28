@@ -62,6 +62,7 @@
         game = new Game();
         document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
         generateButtons(game.word);
+        makeUnderscores(game.word)
     }
 
 function makeUnderscores(word){
