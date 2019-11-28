@@ -22,6 +22,8 @@
     </div>
 </div>
 
+
+<h2 id ="specialMessage"></h2>
 <h2 id ="displayedWord"></h2> <!--The selected word will be displayed here. Remove later or replace with underscores-->
 
 <div class="centerContainer">
@@ -78,10 +80,22 @@ for(i = 0; i < underscore_list.length; i++){
 }
 console.log(underscores);
 document.getElementById("displayedWord").innerHTML = underscores;
+return underscore_list
 }
+
+
+function alterUnderscoreList(underscore_list, word, label){
+    for (i=0; i<underscore_list.length;i++)
+    {if ((word[i] == (label.toLowerCase()))){
+        underscore_list[i] == label
+    }
+}}
+
 makeUnderscores(game.word);
+    
 let importantWord = game.word;
-makeUnderscores(importantWord);
+let hangman_word = makeUnderscores(importantWord);
+
 
 </script>
 </body>

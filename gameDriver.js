@@ -56,7 +56,8 @@ function Game () {
         this.updateStats();
 
         if (this.lettersLeft === 0) {
-            endGame(true, 'displayedWord');
+            console.log("done")
+            endGame(true, 'specialMessage');
         }
     };
 
@@ -64,23 +65,58 @@ function Game () {
         this.score--;
         this.lives--;
         if (this.lives === 0) {
-            endGame(false, 'displayedWord')
+            endGame(false, 'specialMessage')
         }
-
         this.updateStats();
     };
+
+this.underscore_list = makeUnderscores(this.word)
+
+this.alterUnderscoreList = function(underscore_list, word, label){
+    console.log(word)
+    let underscoreArray = underscore_list
+        for (i=0; i < underscore_list.length; i++){
+        if (word[i] == (label.toLowerCase())){
+            underscoreArray[i] = label
+        }}
+        let new_message="";
+for(i = 0; i < underscore_list.length; i++){
+    new_message= new_message.concat(underscoreArray[i]);
+}
+document.getElementById("displayedWord").innerHTML= new_message;
+    }
 }
 
 //          <Generate Letter Buttons>
 
-function Button(label, word) {
+
+function makeUnderscores(word){
+    let underscore_list = []
+for (i = 0; i < word.length; i++){
+    underscore_list.push("_ ");
+}
+console.log(underscore_list);
+
+let underscores="";
+for(i = 0; i < underscore_list.length; i++){
+    underscores= underscores.concat(underscore_list[i]);
+}
+console.log(underscores);
+document.getElementById("displayedWord").innerHTML = underscores;
+return underscore_list
+}
+
+
+function Button(label, word, underscore_list) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
+    this.underscore_list = underscore_list
 
     this.btn.onclick = function() { // method for click behaviour
         if (word.includes(label.toLowerCase())) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
             game.correctLetterChosen(label.toLowerCase());
+            game.alterUnderscoreList(underscore_list, word, label);
         }
         else { // the guess was incorrect
             this.className = "wrongGuessButton";
@@ -97,7 +133,7 @@ function generateButtons(word) {
 
     for (let i = 0; i < letters.length; i++) {
         let currentLetter = letters[i];
-        let b = new Button(currentLetter, word); // create a new button object
+        let b = new Button(currentLetter, word, game.underscore_list); // create a new button object
 
         letterButtons.push(b.btn);
         document.getElementById('letterButtonContainer').appendChild(b.btn);
