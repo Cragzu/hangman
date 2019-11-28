@@ -40,6 +40,7 @@ function Game () {
 
     this.correctLetterChosen = function(letter) {
         this.score++;
+        document.getElementById('scoreValue').innerHTML = this.score;
 
         for (let i = 0; i < this.wordArray.length; i++) {
             if (this.wordArray[i] === letter) {
@@ -125,16 +126,6 @@ function createWord() {
     return wordObject.name.toUpperCase(); // to pass to letter buttons
 }
 
-// ----->                                   <HELPER FUNCTIONS>
-
-//get user guess
-// let theWord = '_'.repeat(document.getElementById("displayedWord").innerHTML.length);
-
-// Compare the users guess to the word
-// NOTE: ensure that the onclick function of Button meshes well with this function (maybe place the function invocation there)
-
-// ----->                                    <EVENT HANDLERS>
-
 // Make the hints invisible or visible.
 function toggleHintVisibility() {
     if (hint === false) {
@@ -162,4 +153,3 @@ function endGame(didUserWin, element_id) {
         document.getElementById(element_id).innerHTML = `You've lost! The word was "${game.word}"`;
     }
 }
-// ----->                                    </EVENT HANDLERS>
