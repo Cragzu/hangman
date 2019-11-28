@@ -47,7 +47,7 @@ function Game () {
             }
         }
         document.getElementById('scoreValue').innerHTML = this.score;
-        console.log(this.lettersLeft + " letters remain!");
+
         if (this.lettersLeft === 0) {
             endGame(true, 'displayedWord');
         }
