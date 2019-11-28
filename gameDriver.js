@@ -18,7 +18,9 @@ function Game () {
     this.updateStats = function () {
         document.getElementById('scoreValue').innerHTML = this.score;
         document.getElementById('livesValue').innerHTML = this.lives;
+    };
 
+    // This call seems weirdly placed but means that, upon instantiation (or a reset) the fields will be updated
     this.updateStats();
 
     this.useALife = function() {
@@ -66,7 +68,6 @@ function Game () {
         }
 
         this.updateStats();
-    };
     };
 }
 
