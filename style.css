@@ -31,10 +31,12 @@ p {
     }
     h1 {
         font-size: 7vh;
+        padding-top: 13vh;
     }
     h2, h3, p {
         font-size: 4vh;
     }
+
     body { /*todo: For testing purposes, remove later*/
         background-color: indianred;
     }
