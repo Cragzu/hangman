@@ -17,20 +17,6 @@ function Game () {
     document.getElementById('scoreValue').innerHTML = this.score;
     document.getElementById('livesValue').innerHTML = this.lives;
 
-    this.resetGame = function() {
-        this.lives = 7;
-        this.score = 0;
-
-        document.getElementById('scoreValue').innerHTML = this.score;
-        document.getElementById('livesValue').innerHTML = this.lives;
-
-        this.word = createWord().toLowerCase();
-
-        document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
-        generateButtons(this.word);
-
-    };
-
     this.useALife = function() {
         this.lives--;
         if (this.lives === 0) {
@@ -61,7 +47,8 @@ function Game () {
                 this.lettersLeft--;
             }
         }
-
+        document.getElementById('scoreValue').innerHTML = this.score;
+        console.log(this.lettersLeft + " letters remain!");
         if (this.lettersLeft === 0) {
             endGame(true, 'displayedWord');
         }

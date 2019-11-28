@@ -52,12 +52,16 @@
 <script>
     // "Start" a new game
     game = new Game();
-
     generateButtons(game.word);
-    document.getElementById("resetBtn").onclick = game.resetGame;
+
+    document.getElementById("resetBtn").onclick = resetGame;
     document.getElementById("hintButton").onclick = toggleHintVisibility;
 
-
+    function resetGame() {
+        game = new Game();
+        document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
+        generateButtons(game.word);
+    }
 
 function makeUnderscores(word){
     let underscore_list = []
