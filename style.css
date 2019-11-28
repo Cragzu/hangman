@@ -23,7 +23,21 @@ p {
     font-family: "Sylfaen", serif;
     font-size: 20px;
 }
-
+@media only screen and (max-width: 600px) { /*Settings for mobile view*/
+    button {
+        min-width: 100px;
+        min-height: 100px;
+    }
+    h1 {
+        font-size: 7vh;
+    }
+    h2, h3, p {
+        font-size: 4vh;
+    }
+    body { /*For testing purposes, remove later*/
+        background-color: indianred;
+    }
+}
 /*Classes*/
 .centerContainer {
     display: flex;
