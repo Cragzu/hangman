@@ -121,6 +121,9 @@ let wordList = [
     new Word("psychedelic", "An adjective people used to describe everything in the sixties"),
     new Word("maternal", "Anything to do with mothers"),
     new Word("fraternity", "Where college dudes can throw sick parties."),
+    new Word("tattoo", "a form of body modification where a design is made by inserting ink"),
+    new Word("electricity", "is the set of physical phenomena associated with the presence and " +
+        "motion of electric charge."),
     new Word("corruption", "When there are problems in a political structure due to the personal " +
         "interests of politicians conflicting with the interests of the population.")
 ];
