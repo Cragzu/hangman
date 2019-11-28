@@ -14,15 +14,15 @@ function Game () {
     this.lettersLeft = this.word.length;
     this.wordArray = this.word.split('');
 
-    document.getElementById('scoreValue').innerHTML = this.score;
-    document.getElementById('livesValue').innerHTML = this.lives;
+    this.updateStats();
 
     this.useALife = function() {
         this.lives--;
         if (this.lives === 0) {
             endGame(false, 'displayedWord')
         }
-        document.getElementById('livesValue').innerHTML = this.lives;
+
+        this.updateStats();
     };
 
     this.toggleHint = function() {
@@ -45,11 +45,28 @@ function Game () {
                 this.score++;
             }
         }
-        document.getElementById('scoreValue').innerHTML = this.score;
+
+        this.updateStats();
 
         if (this.lettersLeft === 0) {
             endGame(true, 'displayedWord');
         }
+    };
+
+    this.incorrectLetterChosen = function() {
+        this.score--;
+        this.lives--;
+        if (this.lives === 0) {
+            endGame(false, 'displayedWord')
+        }
+
+        this.updateStats();
+    };
+
+    // Update lives and score display. This should only be called the Game functions themselves.
+    this.updateStats = function () {
+        document.getElementById('scoreValue').innerHTML = this.score;
+        document.getElementById('livesValue').innerHTML = this.lives;
     };
 }
 
@@ -62,12 +79,11 @@ function Button(label, word) {
     this.btn.onclick = function() { // method for click behaviour
         if (word.includes(label.toLowerCase())) { // the guess was correct
             this.className = "correctGuessButton"; // update button class to disable and change colour
-            // game.incrementScore();
             game.correctLetterChosen(label.toLowerCase());
         }
         else { // the guess was incorrect
             this.className = "wrongGuessButton";
-            game.useALife();
+            game.incorrectLetterChosen();
         }
     };
 }
