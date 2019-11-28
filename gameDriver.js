@@ -54,6 +54,7 @@ function Game () {
 
     this.correctLetterChosen = function(letter) {
         this.score++;
+        document.getElementById('scoreValue').innerHTML = this.score;
 
         for (let i = 0; i < this.wordArray.length; i++) {
             if (this.wordArray[i] === letter) {
