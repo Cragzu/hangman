@@ -166,3 +166,7 @@ p {
     clear: both;
     display: block;
   }
+  
+  #leaderBoard{
+      display: none;
+  }
