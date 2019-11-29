@@ -64,29 +64,11 @@
         document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
-        makeUnderscores(game.word)
-        if (hint == true) {
+        makeUnderscores(game.word);
+        if (hint === true) {
             toggleHintVisibility();
         }
     }
-
-function makeUnderscores(word){
-    let underscore_list = [];
-for (i = 0; i < word.length; i++){
-    underscore_list.push("_ ");
-}
-
-let underscores="";
-for(i = 0; i < underscore_list.length; i++){
-    underscores= underscores.concat(underscore_list[i]);
-}
-document.getElementById("displayedWord").innerHTML = underscores;
-return underscore_list
-}
-    makeUnderscores(game.word);
-    
-let importantWord = game.word;
-let hangman_word = makeUnderscores(importantWord);
 
 </script>
 </body>
