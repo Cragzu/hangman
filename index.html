@@ -64,8 +64,8 @@
         document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
-        makeUnderscores(game.word)
-        if (hint == true) {
+        makeUnderscores(game.word);
+        if (hint === true) {
             toggleHintVisibility();
         }
     }
@@ -84,7 +84,7 @@ document.getElementById("displayedWord").innerHTML = underscores;
 return underscore_list
 }
     makeUnderscores(game.word);
-    
+
 let importantWord = game.word;
 let hangman_word = makeUnderscores(importantWord);
 
