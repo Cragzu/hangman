@@ -70,7 +70,7 @@ function Game () {
         this.updateStats();
     };
 
-this.underscore_list = makeUnderscores(this.word)
+this.underscore_list = makeUnderscores(this.word);
 
 this.alterUnderscoreList = function(underscore_list, word, label){
     console.log(word)
@@ -91,26 +91,27 @@ document.getElementById("displayedWord").innerHTML= new_message;
 
 
 function makeUnderscores(word){
-    let underscore_list = []
-for (i = 0; i < word.length; i++){
-    underscore_list.push("_ ");
-}
-console.log(underscore_list);
+    let underscore_list = [];
+    for (let i = 0; i < word.length; i++){
+        underscore_list.push("_ ");
+    }
+    console.log(underscore_list);
 
-let underscores="";
-for(i = 0; i < underscore_list.length; i++){
-    underscores= underscores.concat(underscore_list[i]);
-}
-console.log(underscores);
-document.getElementById("displayedWord").innerHTML = underscores;
-return underscore_list
+    let underscores="";
+    for(let i = 0; i < underscore_list.length; i++){
+        underscores= underscores.concat(underscore_list[i]);
+    }
+
+    console.log(underscores);
+    document.getElementById("displayedWord").innerHTML = underscores;
+    return underscore_list;
 }
 
 
 function Button(label, word, underscore_list) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
-    this.underscore_list = underscore_list
+    this.underscore_list = underscore_list;
 
     this.btn.onclick = function() { // method for click behaviour
         if (word.includes(label.toLowerCase())) { // the guess was correct
