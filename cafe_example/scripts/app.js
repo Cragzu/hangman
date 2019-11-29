@@ -1,4 +1,4 @@
-const cafelist = document.querySelector('#scores-list'); // How you target the HTML element with this ID
+const scorelst = document.querySelector('#scores-list'); // How you target the HTML element with this ID
 const form = document.querySelector("#add-scores-form"); // How you target the form with this id
 
 
@@ -19,7 +19,7 @@ li.appendChild(score); // make the list using text made from the firebase data.
 li.appendChild(cross);
 
 
-cafelist.appendChild(li); // add the list to the HTML element
+scorelst.appendChild(li); // add the list to the HTML element
 
 
 // deleting data.
@@ -69,8 +69,8 @@ db.collection("scores").orderBy('score').onSnapshot(snapshot => {
     if(change.type == 'added'){
       renderScores(change.doc)
     } else if (change.type == 'removed'){
-      let li = cafelist.querySelector('[data-id=' + change.doc.id + ']');
-      cafelist.removeChild(li);
+      let li = scorelst.querySelector('[data-id=' + change.doc.id + ']');
+      scorelst.removeChild(li);
     }
   })
   
