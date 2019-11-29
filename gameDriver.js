@@ -107,7 +107,6 @@ function makeUnderscores(word){
     return underscore_list;
 }
 
-
 function Button(label, word, underscore_list) {
     this.btn = document.createElement("BUTTON");
     this.btn.innerHTML = label;
@@ -185,12 +184,12 @@ function createWord() {
 function toggleHintVisibility() {
     if (hint === false) {
         document.getElementById("definition").style.visibility= "visible";
-        hintButton.innerHTML = "hide hint";
+        hintButton.innerHTML = "Hide Hint";
         hint = true;
     }
     else {
         document.getElementById("definition").style.visibility= "hidden";
-        hintButton.innerHTML = "display hint";
+        hintButton.innerHTML = "Display Hint";
         hint = false;
     }
 } // Put this into Game
