@@ -27,7 +27,7 @@
 <h2 id ="displayedWord"></h2> <!--The selected word will be displayed here. Remove later or replace with underscores-->
 
 <div class="centerContainer">
-    <button id = "hintButton"> display hint</button>
+    <button id = "hintButton">Display Hint</button>
 </div>
 
 <h2 id ="definition"></h2> <!--This is where a hint will appear for the word-->
@@ -44,7 +44,6 @@
             <p id="scoreText">Score: &nbsp;</p>
             <p id="scoreValue">Score value</p>
         </div>
-
 
     </div>
 
@@ -84,7 +83,6 @@ document.getElementById("displayedWord").innerHTML = underscores;
 return underscore_list
 }
 
-
 function alterUnderscoreList(underscore_list, word, label){
     for (i=0; i<underscore_list.length;i++)
     {if ((word[i] == (label.toLowerCase()))){
@@ -96,7 +94,6 @@ makeUnderscores(game.word);
     
 let importantWord = game.word;
 let hangman_word = makeUnderscores(importantWord);
-
 
 </script>
 </body>
