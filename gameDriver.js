@@ -62,7 +62,7 @@ function Game () {
     };
 
     this.incorrectLetterChosen = function() {
-        if (this.score === 0) {
+        if (this.score !== 0) {
             this.score--;
         }
 
@@ -79,7 +79,7 @@ this.alterUnderscoreList = function(underscore_list, word, label){
     console.log(word)
     let underscoreArray = underscore_list
         for (i=0; i < underscore_list.length; i++){
-        if (word[i] == (label.toLowerCase())){
+        if (word[i] === (label.toLowerCase())){
             underscoreArray[i] = label
         }}
         let new_message="";
