@@ -63,7 +63,7 @@
     function resetGame() {
         game = new Game();
         document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
-        document.getElementById("specialMessage").innerHTML = ""
+        document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
         makeUnderscores(game.word)
     }
