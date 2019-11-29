@@ -2,9 +2,6 @@
 
 // ----->                                OBJECT and other VARIABLE declarations
 
-// set hint boolean and variables containing refs to frequently accessed elements
-// let hint = false; // Put this into Game
-
 //Game object, holding the word, lives used, score
 function Game () {
     this.lives = 7;
