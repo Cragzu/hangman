@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width"> <!--For responsive screen sizes-->
     <title>Hangman</title>
-    <link href="style.css" rel="stylesheet" type="text/css"> <!--Import external stylesheet-->
+    <link href="styles.css" rel="stylesheet" type="text/css"> <!--Import external stylesheet-->
     <script src="gameDriver.js"></script> <!-- Import JS scripts -->
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="scripts/firebase_setup.js"></script>
+    <link rel="stylesheet" href="style/styles.css">
+
 </head>
 
 <body>
@@ -22,7 +29,6 @@
     </div>
 </div>
 
-<a href="leaderboard.html"><p>leaderboard</p></a>
 
 <h2 id ="specialMessage"></h2>
 <h2 id ="displayedWord"></h2> <!--The selected word will be displayed here. Remove later or replace with underscores-->
@@ -52,6 +58,39 @@
 
 <div class="centerContainer" id="letterButtonContainer"></div> <!--This is where the letter buttons are displayed-->
 
+<h1>Leaderboard</h1>
+<div class="content">
+  <form id="add-scores-form">
+    <input type="text" name="name" placeholder="Name">
+    <button>Add Score</button>
+  </form>
+  <ul id="scores-list"></ul>
+
+</div>
+
+
+
+  <script>
+    // Your web app's Firebase configuration
+              var firebaseConfig = {
+                apiKey: "AIzaSyAB-vxtLDcfQKj1Noull03LSW0UqDG5cfw",
+                authDomain: "learning-firestore-bab37.firebaseapp.com",
+                databaseURL: "https://learning-firestore-bab37.firebaseio.com",
+                projectId: "learning-firestore-bab37",
+                storageBucket: "learning-firestore-bab37.appspot.com",
+                messagingSenderId: "10298250754",
+                appId: "1:10298250754:web:2b3e2235e38845e4b3391b",
+                measurementId: "G-K40KBCH65H"
+              };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          const db = firebase.firestore()
+      
+  </script>
+    <script src="app.js"></script>
+  </body>
+  </html>
+  
 <script>
     // "Start" a new game
     game = new Game();
