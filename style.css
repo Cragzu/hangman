@@ -2,6 +2,9 @@
 body {
     background-color: gainsboro;
 }
+html {
+    scroll-behavior: smooth;
+}
 button {
     width: auto;
     height: auto;
