@@ -88,8 +88,7 @@ document.getElementById("displayedWord").innerHTML= new_message;
     }
 }
 
-//          <Generate Letter Buttons>
-
+// <Generate Letter Buttons>
 
 function makeUnderscores(word){
     let underscore_list = [];
@@ -121,7 +120,7 @@ function Button(label, word, underscore_list) {
             this.className = "wrongGuessButton";
             game.incorrectLetterChosen();
         }
-    };
+    }
 }
 
 let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -139,7 +138,7 @@ function generateButtons(word) {
     }
 }
 
-//          <Select random word with definition>
+// <Select random word with definition>
 
 function Word(name, definition) {
     this.name = name;
@@ -163,7 +162,6 @@ let wordList = [
     new Word("corruption", "When there are problems in a political structure due to the personal " +
         "interests of politicians conflicting with the interests of the population.")
 ];
-
 
 // Select a random word
 function createWord() {
@@ -191,7 +189,7 @@ function toggleHintVisibility() {
     }
 } // Put this into Game
 
-//Output the end-of-game
+// Output the end-of-game
 function endGame(didUserWin, element_id) {
     if (didUserWin) {
         document.getElementById(element_id).innerHTML = "Wow! You won! Press reset to play again";
