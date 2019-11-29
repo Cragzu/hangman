@@ -197,10 +197,6 @@ function toggleHintVisibility() {
     }
 } // Put this into Game
 
-function startSession(){
-    document.getElementsByClassName("notshowingyet").style.display = "block";
-    document.getElementsByClassName("showing").style.display = "none";
-}
 //Output the end-of-game
 function endGame(didUserWin, element_id) {
     if (didUserWin) {
