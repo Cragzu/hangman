@@ -170,7 +170,6 @@ function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let wordObject = wordList[randomNumber];
 
-    //definitionText.style.visibility="hidden";
     document.getElementById('definition').innerHTML = wordObject.definition;
 
 
