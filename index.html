@@ -57,7 +57,7 @@
 </div>
 
 <div class="centerContainer" id="letterButtonContainer"></div> <!--This is where the letter buttons are displayed-->
-
+<div id = "leaderBoard">
 <h1>Leaderboard</h1>
 <div class="content">
   <form id="add-scores-form">
@@ -68,7 +68,7 @@
 
 </div>
 
-
+</div>
 
   <script>
     // Your web app's Firebase configuration
@@ -105,8 +105,9 @@
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
         makeUnderscores(game.word)
+        document.getElementById("leaderBoard").display="none";
         if (hint == true){
-        game.toggleHintVisibility()
+        game.toggleHintVisibility();
         }
     }
 

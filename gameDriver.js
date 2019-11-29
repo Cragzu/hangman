@@ -2,6 +2,9 @@
 
 // ----->                                OBJECT and other VARIABLE declarations
 
+// set hint boolean and variables containing refs to frequently accessed elements
+let hint = false; // Put this into Game
+
 //Game object, holding the word, lives used, score
 function Game () {
     this.lives = 7;
@@ -10,7 +13,6 @@ function Game () {
     this.hint = false;
     this.lettersLeft = this.word.length;
     this.wordArray = this.word.split('');
-    this.underscore_list = makeUnderscores(this.word);
 
     // Update lives and score display. This should only be called the Game functions themselves.
     this.updateStats = function () {
@@ -20,6 +22,16 @@ function Game () {
 
     // This call seems weirdly placed but means that, upon instantiation (or a reset) the fields will be updated
     this.updateStats();
+
+    this.useALife = function() {
+        this.lives--;
+        if (this.lives === 0) {
+            endGame(false, 'displayedWord')
+        }
+
+        this.updateStats();
+    };
+
 
     this.correctLetterChosen = function(letter) {
         for (let i = 0; i < this.wordArray.length; i++) {
@@ -48,31 +60,33 @@ function Game () {
         this.updateStats();
     };
 
-    this.alterUnderscoreList = function(underscore_list, word, label){
-        let underscoreArray = underscore_list;
-            for (let i = 0; i < underscore_list.length; i++){
-            if (word[i] === (label.toLowerCase())){
-                underscoreArray[i] = label;
-            }}
-            let new_message = "";
-        for(let i = 0; i < underscore_list.length; i++){
-            new_message= new_message.concat(underscoreArray[i]);
-        }
-        document.getElementById("displayedWord").innerHTML= new_message;
-    };
+    this.underscore_list = makeUnderscores(this.word);
 
-  this.toggleHintVisibility = function() {
-        if (this.hint === false) {
-            document.getElementById("definition").style.visibility= "visible";
-            hintButton.innerHTML = "Hide Hint";
-            this.hint = true;
+    this.alterUnderscoreList = function(underscore_list, word, label){
+        let underscoreArray = underscore_list
+            for (i=0; i < underscore_list.length; i++){
+            if (word[i] === (label.toLowerCase())){
+                underscoreArray[i] = label
+            }}
+            let new_message="";
+    for(i = 0; i < underscore_list.length; i++){
+        new_message= new_message.concat(underscoreArray[i]);
+    }
+    document.getElementById("displayedWord").innerHTML= new_message;
+    }
+
+      this.toggleHintVisibility = function() {
+            if (hint === false) {
+                document.getElementById("definition").style.visibility= "visible";
+                hintButton.innerHTML = "Hide Hint";
+                hint = true;
+            }
+            else {
+                document.getElementById("definition").style.visibility= "hidden";
+                hintButton.innerHTML = "Display Hint";
+                hint = false;
         }
-        else {
-            document.getElementById("definition").style.visibility= "hidden";
-            hintButton.innerHTML = "Display Hint";
-            this.hint = false;
-        }
-    };
+    }
 }
 
 // <Generate Letter Buttons>
@@ -177,6 +191,5 @@ function endGame(didUserWin, element_id) {
     for (let i = 0; i < letterButtons.length; i++) {
         letterButtons[i].disabled = true;
     }
-
-    window.scrollTo(0,0);
+    document.getElementById("leaderBoard").style.display = "block";
 }
