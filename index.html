@@ -82,15 +82,7 @@ console.log(underscores);
 document.getElementById("displayedWord").innerHTML = underscores;
 return underscore_list
 }
-
-function alterUnderscoreList(underscore_list, word, label){
-    for (i=0; i<underscore_list.length;i++)
-    {if ((word[i] == (label.toLowerCase()))){
-        underscore_list[i] == label
-    }
-}}
-
-makeUnderscores(game.word);
+    makeUnderscores(game.word);
     
 let importantWord = game.word;
 let hangman_word = makeUnderscores(importantWord);

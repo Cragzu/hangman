@@ -85,7 +85,4 @@ p {
         top: 1vh;
         left: 1vh;
     }
-    body { /*todo: For testing purposes, remove later*/
-        background-color: indianred;
-    }
 }
