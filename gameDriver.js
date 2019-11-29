@@ -3,7 +3,7 @@
 // ----->                                OBJECT and other VARIABLE declarations
 
 // set hint boolean and variables containing refs to frequently accessed elements
-let hint = false; // Put this into Game
+// let hint = false; // Put this into Game
 
 //Game object, holding the word, lives used, score
 function Game () {
@@ -65,15 +65,15 @@ function Game () {
     };
 
   this.toggleHintVisibility = function() {
-        if (hint === false) {
+        if (this.hint === false) {
             document.getElementById("definition").style.visibility= "visible";
             hintButton.innerHTML = "Hide Hint";
-            hint = true;
+            this.hint = true;
         }
         else {
             document.getElementById("definition").style.visibility= "hidden";
             hintButton.innerHTML = "Display Hint";
-            hint = false;
+            this.hint = false;
         }
     };
 }
@@ -180,4 +180,6 @@ function endGame(didUserWin, element_id) {
     for (let i = 0; i < letterButtons.length; i++) {
         letterButtons[i].disabled = true;
     }
+
+    window.scrollTo(0,0);
 }
