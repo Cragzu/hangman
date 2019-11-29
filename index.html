@@ -65,6 +65,9 @@
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
         makeUnderscores(game.word)
+        if (hint == true) {
+            toggleHintVisibility();
+        }
     }
 
 function makeUnderscores(word){
