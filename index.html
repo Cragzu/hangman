@@ -70,26 +70,6 @@
         }
     }
 
-function makeUnderscores(word){
-    let underscore_list = []
-for (i = 0; i < word.length; i++){
-    underscore_list.push("_ ");
-}
-console.log(underscore_list);
-
-let underscores="";
-for(i = 0; i < underscore_list.length; i++){
-    underscores= underscores.concat(underscore_list[i]);
-}
-console.log(underscores);
-document.getElementById("displayedWord").innerHTML = underscores;
-return underscore_list
-}
-    makeUnderscores(game.word);
-    
-let importantWord = game.word;
-let hangman_word = makeUnderscores(importantWord);
-
 </script>
 </body>
 </html>
