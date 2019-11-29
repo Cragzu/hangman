@@ -62,7 +62,10 @@ function Game () {
     };
 
     this.incorrectLetterChosen = function() {
-        this.score--;
+        if (this.score === 0) {
+            this.score--;
+        }
+
         this.lives--;
         if (this.lives === 0) {
             endGame(false, 'specialMessage')
