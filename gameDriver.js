@@ -191,4 +191,6 @@ function endGame(didUserWin, element_id) {
     for (let i = 0; i < letterButtons.length; i++) {
         letterButtons[i].disabled = true;
     }
+
+    window.scrollTo(0, 0);
 }
