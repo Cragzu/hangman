@@ -56,7 +56,6 @@ function Game () {
         this.updateStats();
 
         if (this.lettersLeft === 0) {
-            console.log("done")
             endGame(true, 'specialMessage');
         }
     };
@@ -76,7 +75,6 @@ function Game () {
 this.underscore_list = makeUnderscores(this.word);
 
 this.alterUnderscoreList = function(underscore_list, word, label){
-    console.log(word)
     let underscoreArray = underscore_list
         for (i=0; i < underscore_list.length; i++){
         if (word[i] === (label.toLowerCase())){
@@ -98,14 +96,12 @@ function makeUnderscores(word){
     for (let i = 0; i < word.length; i++){
         underscore_list.push("_ ");
     }
-    console.log(underscore_list);
 
     let underscores="";
     for(let i = 0; i < underscore_list.length; i++){
         underscores= underscores.concat(underscore_list[i]);
     }
 
-    console.log(underscores);
     document.getElementById("displayedWord").innerHTML = underscores;
     return underscore_list;
 }
@@ -173,8 +169,6 @@ let wordList = [
 function createWord() {
     let randomNumber = Math.floor(Math.random()*wordList.length);
     let wordObject = wordList[randomNumber];
-
-    console.log("Created word: " + wordObject.name);
 
     //definitionText.style.visibility="hidden";
     document.getElementById('definition').innerHTML = wordObject.definition;
