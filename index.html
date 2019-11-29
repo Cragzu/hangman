@@ -22,6 +22,7 @@
     </div>
 </div>
 
+<a href="leaderboard.html"><p>leaderboard</p></a>
 
 <h2 id ="specialMessage"></h2>
 <h2 id ="displayedWord"></h2> <!--The selected word will be displayed here. Remove later or replace with underscores-->
@@ -57,16 +58,16 @@
     generateButtons(game.word);
 
     document.getElementById("resetBtn").onclick = resetGame;
-    document.getElementById("hintButton").onclick = toggleHintVisibility;
+    document.getElementById("hintButton").onclick = game.toggleHintVisibility;
 
     function resetGame() {
         game = new Game();
         document.getElementById('letterButtonContainer').innerHTML = ''; // Remove all buttons
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
-        makeUnderscores(game.word);
-        if (hint === true) {
-            toggleHintVisibility();
+        makeUnderscores(game.word)
+        if (hint == true){
+        game.toggleHintVisibility()
         }
     }
 
