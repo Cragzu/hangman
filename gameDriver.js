@@ -62,7 +62,7 @@ function Game () {
     };
 
     this.incorrectLetterChosen = function() {
-        if (this.score !== 0) {
+        if (this.score > 0) {
             this.score--;
         }
 
@@ -208,5 +208,9 @@ function endGame(didUserWin, element_id) {
     }
     else {
         document.getElementById(element_id).innerHTML = `You've lost! The word was "${game.word}"`;
+    }
+
+    for (let i = 0; i < letterButtons.length; i++) {
+        letterButtons[i].disabled = true;
     }
 }
