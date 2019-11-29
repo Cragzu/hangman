@@ -65,32 +65,25 @@
         document.getElementById("specialMessage").innerHTML = "";
         generateButtons(game.word);
         makeUnderscores(game.word)
+        if (hint == true) {
+            toggleHintVisibility();
+        }
     }
 
 function makeUnderscores(word){
-    let underscore_list = []
+    let underscore_list = [];
 for (i = 0; i < word.length; i++){
     underscore_list.push("_ ");
 }
-console.log(underscore_list);
 
 let underscores="";
 for(i = 0; i < underscore_list.length; i++){
     underscores= underscores.concat(underscore_list[i]);
 }
-console.log(underscores);
 document.getElementById("displayedWord").innerHTML = underscores;
 return underscore_list
 }
-
-function alterUnderscoreList(underscore_list, word, label){
-    for (i=0; i<underscore_list.length;i++)
-    {if ((word[i] == (label.toLowerCase()))){
-        underscore_list[i] == label
-    }
-}}
-
-makeUnderscores(game.word);
+    makeUnderscores(game.word);
     
 let importantWord = game.word;
 let hangman_word = makeUnderscores(importantWord);
