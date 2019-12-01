@@ -23,16 +23,6 @@ function Game () {
     // This call seems weirdly placed but means that, upon instantiation (or a reset) the fields will be updated
     this.updateStats();
 
-    this.useALife = function() {
-        this.lives--;
-        if (this.lives === 0) {
-            endGame(false, 'displayedWord')
-        }
-
-        this.updateStats();
-    };
-
-
     this.correctLetterChosen = function(letter) {
         for (let i = 0; i < this.wordArray.length; i++) {
             if (this.wordArray[i] === letter) {
@@ -55,7 +45,7 @@ function Game () {
 
         this.lives--;
         if (this.lives === 0) {
-            endGame(false, 'specialMessage')
+            endGame(false, 'specialMessage');
         }
         this.updateStats();
     };
@@ -63,28 +53,32 @@ function Game () {
     this.underscore_list = makeUnderscores(this.word);
 
     this.alterUnderscoreList = function(underscore_list, word, label){
-        let underscoreArray = underscore_list
-            for (i=0; i < underscore_list.length; i++){
+        let underscoreArray = underscore_list;
+        for (let i = 0; i < underscore_list.length; i++){
             if (word[i] === (label.toLowerCase())){
-                underscoreArray[i] = label
-            }}
-            let new_message="";
-    for(i = 0; i < underscore_list.length; i++){
-        new_message= new_message.concat(underscoreArray[i]);
-    }
-    document.getElementById("displayedWord").innerHTML= new_message;
-    }
-
-      this.toggleHintVisibility = function() {
-            if (hint === false) {
-                document.getElementById("definition").style.visibility= "visible";
-                hintButton.innerHTML = "Hide Hint";
-                hint = true;
+            underscoreArray[i] = label
             }
-            else {
-                document.getElementById("definition").style.visibility= "hidden";
-                hintButton.innerHTML = "Display Hint";
-                hint = false;
+        }
+
+        let new_message = "";
+
+        for(let i = 0; i < underscore_list.length; i++){
+            new_message= new_message.concat(underscoreArray[i]);
+        }
+
+        document.getElementById("displayedWord").innerHTML= new_message;
+    };
+
+    this.toggleHintVisibility = function() {
+        if (hint === false) {
+            document.getElementById("definition").style.visibility= "visible";
+            hintButton.innerHTML = "Hide Hint";
+            hint = true;
+        }
+        else {
+            document.getElementById("definition").style.visibility= "hidden";
+            hintButton.innerHTML = "Display Hint";
+            hint = false;
         }
     }
 }
