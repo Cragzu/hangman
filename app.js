@@ -32,11 +32,7 @@ cross.addEventListener('click', (e) =>{
 
 }
 //Get all the data from the firestore database
-db.collection("scores").get().then((snapshot) =>{
-  snapshot.docs.forEach(doc => { //loops through each document after the data has been retreived.
-    renderScores(doc); // Function I made to display the data on the table
-  })
-})
+
 
 // get some of the data
 // db.collection("scores").where("score", ">", "N" ).get().then((snapshot) =>{
