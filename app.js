@@ -55,8 +55,6 @@ form.addEventListener('submit', (e) => {
   name: form.name.value,
   score: game.score
 });
-form.name.value = "";
-form.score.value = "";
 })
 
 //Allows real time updates of the page
